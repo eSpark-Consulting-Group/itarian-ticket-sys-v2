@@ -111,9 +111,11 @@ const SettingsScreen = () => {
   };
 
   const hideMenu = () => {
+    console.log("hideMenu");
     setVisible(false);
   };
   const openMenu = () => {
+    console.log("openMenu", visible); 
     setVisible(true);
   };
 
@@ -134,6 +136,10 @@ const SettingsScreen = () => {
       });
   }, []);
   const { colors, dark }: Theme = useTheme();
+
+
+  console.log("visible", visible);
+  
   return (
     <View>
       <List.Section>

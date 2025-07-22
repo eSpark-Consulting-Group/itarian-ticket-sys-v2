@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 // import { Theme, useTheme } from '@react-navigation/native';
 
-export const CstmPressable = ({
+export function CstmPressable ({
   android_disableSound = false,
   children,
   onPress = () => {},
@@ -25,7 +25,7 @@ export const CstmPressable = ({
   disabled?: boolean;
   android_ripple?: null | PressableAndroidRippleConfig;
   otherProps?: PressableProps;
-}) => {
+}) {
   // const { dark }: Theme = useTheme();
   // const rippleColor = dark ? '#ffffff1a' : '#0000000e';
 
@@ -50,3 +50,4 @@ export const CstmPressable = ({
     </Pressable>
   );
 };
+

@@ -135,6 +135,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
             activeTintColor={'#fff'}
             label={'Settings'}
             inactiveTintColor={'#fff'}
+  
             icon={({ color, size, focused }) => (
               <Ionicons name="settings-outline" size={size} color={color} />
             )}
@@ -278,7 +279,7 @@ const Draw = () => {
           component={Search}
           options={{
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ right: 20, color }}>Search</Text>
+              <Text style={{ color }}>Search</Text>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <Ionicons name="search" size={size} color={color} />
@@ -296,7 +297,7 @@ const Draw = () => {
               />
             ),
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ right: 20, color }}>Tickets</Text>
+              <Text style={{ color }}>Tickets</Text>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <MCI name="calendar" size={size} color={color} />
@@ -344,7 +345,7 @@ const Draw = () => {
             headerRight: noHeader,
             headerTitle: () => <CstmHeader title="Organizations" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ right: 20, color }}>Organizations</Text>
+              <Text style={{ color }}>Organizations</Text>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <MCI
@@ -361,7 +362,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Users" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ right: 20, color }}>Users & Staffs</Text>
+              <Text style={{ color }}>Users & Staffs</Text>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <AD name="contacts" size={size} color={color} />
@@ -375,7 +376,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Teams" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ right: 20, color }}>Teams</Text>
+              <Text style={{ color }}>Teams</Text>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <FA name="group" size={size} color={color} />
@@ -389,7 +390,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Sla Plan" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ right: 20, color }}>Sla Plan</Text>
+              <Text style={{ color }}>Sla Plan</Text>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <MCI name="clock" size={size} color={color} />
@@ -429,7 +430,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Ticket Priorities" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ right: 20, color }}>Ticket Priorities</Text>
+              <Text style={{ color }}>Ticket Priorities</Text>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <OI name="north-star" size={size} color={color} />
@@ -443,7 +444,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Ticket Status" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ right: 20, color }}>Ticket Status</Text>
+              <Text style={{ color }}>Ticket Status</Text>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <EI name="squared-plus" size={size} color={color} />
@@ -457,7 +458,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Departments" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ right: 20, color }}>Departments</Text>
+              <Text style={{ color }}>Departments</Text>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <MCI name="home-group" size={size} color={color} />
@@ -471,7 +472,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Locations" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ right: 20, color }}>Locations</Text>
+              <Text style={{ color }}>Locations</Text>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <EI name="location" size={size} color={color} />
@@ -485,7 +486,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Help Topics" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ right: 20, color }}>Help Topics</Text>
+              <Text style={{ color }}>Help Topics</Text>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <Ionicons name="newspaper-outline" size={size} color={color} />
@@ -499,7 +500,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Canned Response" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ right: 20, color }}>Canned Response</Text>
+              <Text style={{ color }}>Canned Response</Text>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <FA name="certificate" size={size} color={color} />
@@ -513,7 +514,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Groups" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ right: 20, color }}>Groups</Text>
+              <Text style={{ color }}>Groups</Text>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <MCI name="group" size={size} color={color} />
@@ -586,7 +587,7 @@ const styles = StyleSheet.create({
   },
   footerDrawerStyle: {
     opacity: 0.75,
-    right: 20,
+    // right: 20,
   },
   drawerTitleStyle: {
     fontWeight: '700',
