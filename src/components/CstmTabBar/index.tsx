@@ -62,7 +62,7 @@ export default function CstmTabBar(props: any) {
         key={item?.key}
         style={{
           flexDirection: 'row',
-          // backgroundColor: colors.background,
+          backgroundColor: colors.background,
           zIndex: -1,
         }}>
         <CstmPressable
@@ -91,7 +91,7 @@ export default function CstmTabBar(props: any) {
       <View
         style={{
           ...styles.container,
-          backgroundColor: colors.background,
+          // backgroundColor: colors.background,
         }}>
         <View>
           <View
