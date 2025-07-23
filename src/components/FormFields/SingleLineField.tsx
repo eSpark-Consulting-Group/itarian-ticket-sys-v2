@@ -150,17 +150,17 @@ const SingleLineField = ({
                     onChangeText={onChangeText}
                   />
                 ) : (
-                  // <TextEditor
-                  //   value={title}
-                  //   placeholder={placeholder}
-                  //   onChangeText={onChangeText}
-                  // />
-                  <CstmTitleInput
-                    width={inputWidth}
+                  <TextEditor
                     value={title}
+                    placeholder={placeholder}
                     onChangeText={onChangeText}
-                    keyboardType={keyboardType}
                   />
+                  // <CstmTitleInput
+                  //   width={inputWidth}
+                  //   value={title}
+                  //   onChangeText={onChangeText}
+                  //   keyboardType={keyboardType}
+                  // />
                 )
               ) : (
                 <>

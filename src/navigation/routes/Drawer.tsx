@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Platform,
 } from 'react-native';
+import { initialWindowMetrics } from 'react-native-safe-area-context';
 import {
   createDrawerNavigator,
   DrawerItemList,
@@ -80,9 +81,18 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
   const { colors }: Theme = useTheme();
   const { index } = props.state;
 
+  // Calculate top inset for Android notch
+  const topInset =
+    Platform.OS === 'android' && (initialWindowMetrics?.insets.top || 0) > 24
+      ? initialWindowMetrics?.insets.top
+      : 0;
   return (
     <SafeAreaView
-      style={{ ...styles.container, backgroundColor: colors.primary }}>
+      style={{
+        ...styles.container,
+        backgroundColor: colors.primary,
+        paddingTop: topInset,
+      }}>
       <TouchableOpacity
         style={styles.header}
         onPress={() =>

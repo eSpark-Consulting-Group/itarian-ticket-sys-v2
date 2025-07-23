@@ -454,9 +454,16 @@ export function create_UUID() {
 }
 
 export const showMessageSafe = (options: MessageOptions) => {
+  // Show top inset for iOS or Android with notch
+  const hasNotch =
+    Platform.OS === 'android' && (initialWindowMetrics?.insets.top || 0) > 24;
   flashShowMessage({
     statusBarHeight:
-      Platform.OS == 'ios' ? initialWindowMetrics?.insets.top || 0 : undefined,
+      Platform.OS === 'ios'
+        ? initialWindowMetrics?.insets.top || 0
+        : hasNotch
+        ? initialWindowMetrics?.insets.top || 0
+        : undefined,
     ...options,
   });
 };

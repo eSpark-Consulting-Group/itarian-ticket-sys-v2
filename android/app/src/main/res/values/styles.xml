@@ -1,9 +1,28 @@
 <resources>
 
+    <!-- Android 12 Splash Screen Theme -->
+    <style name="Theme.SplashScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="windowSplashScreenBackground">@color/bootsplash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/bootsplash_logo</item>
+        <item name="postSplashScreenTheme">@style/AppTheme</item>
+    </style>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
+        <item name="android:datePickerDialogTheme">@style/DialogDatePicker.Theme</item>
+        <item name="android:timePickerDialogTheme">@style/DialogDatePicker.Theme</item>
+    </style>
+
+    <!-- BootTheme should inherit from Theme.SplashScreen -->
+    <style name="BootTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/bootsplash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/bootsplash_logo</item>
+        <item name="postSplashScreenTheme">@style/AppTheme</item>
+    </style>
+ 
+    <style name="DialogDatePicker.Theme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/itarian_blue</item>
     </style>
 
 </resources>
