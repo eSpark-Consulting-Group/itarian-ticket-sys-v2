@@ -1,5 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, FlatList, Switch } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  Switch,
+  DimensionValue,
+} from 'react-native';
 import { useTheme, Theme } from '@react-navigation/native';
 import { useHookstate, State } from '@hookstate/core';
 import { moderateScale } from 'react-native-size-matters';
@@ -34,6 +41,8 @@ const SettingsScreen = () => {
 
   const dropdownRef = useRef<View>(null);
   const [dropdownTop, setDropdownTop] = useState<number>(0);
+  const navigationDropdownRef = useRef<any>(null);
+  const [navDropdownTop, setNavDropdownTop] = useState(0);
 
   const onToggleSwitch = () => {
     setIsSwitchOn(!isSwitchOn);
@@ -92,10 +101,12 @@ const SettingsScreen = () => {
 
   useEffect(() => {
     getNavigtionApps()
-      .then(arr => {
+      .then((arr: any) => {
+        console.log('=====, ', arr);
+
         setDefaultNavigationList(arr);
       })
-      .catch(err => {
+      .catch((err: any) => {
         console.log('err', err);
       });
   }, []);
@@ -200,37 +211,73 @@ const SettingsScreen = () => {
       >
         Default Navigation App
       </Text>
+
       <TouchableOpacity
-        onPress={() => setnavigationVisible(!navigationVisible)}
+        ref={navigationDropdownRef}
+        onPress={() => {
+          navigationDropdownRef.current?.measureInWindow(
+            (x: any, y: any, width: DimensionValue, height: DimensionValue) => {
+              setNavDropdownTop(y - 20);
+              setnavigationVisible(!navigationVisible);
+            },
+          );
+        }}
+        style={{ marginBottom: 10 }}
       >
         <View
           style={{
             paddingVertical: 10,
             borderBottomWidth: 1,
             borderColor: colors.border,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
           }}
         >
           <Text style={{ color: colors.text }}>
             {defaultNav || 'Select default navigation'}
           </Text>
+          <EI
+            name={navigationVisible ? 'chevron-up' : 'chevron-down'}
+            size={22}
+            style={{ paddingHorizontal: 5 }}
+            color={colors.primary}
+          />
         </View>
       </TouchableOpacity>
+
       {navigationVisible && (
-        <FlatList
-          data={defaultNavigitonList}
-          keyExtractor={(_, index) => index.toString()}
-          renderItem={({ item, index }: any) => (
-            <MenuItem
-              itemName={item.name}
-              textColor={colors.text}
-              dark={dark}
-              onPress={() => {
-                setnavigationVisible(false);
-                handleDefaultNaveSwitch(index.toString(), item.name);
-              }}
-            />
-          )}
-        />
+        <View
+          style={{
+            position: 'absolute',
+            top: navDropdownTop,
+            left: 20,
+            right: 20,
+            zIndex: 100,
+            backgroundColor: colors.background,
+            borderRadius: 8,
+            elevation: 5,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.2,
+            shadowRadius: 4,
+          }}
+        >
+          <FlatList
+            data={defaultNavigitonList}
+            keyExtractor={(_, index) => index.toString()}
+            renderItem={({ item, index }: any) => (
+              <MenuItem
+                itemName={item.name}
+                textColor={colors.text}
+                dark={dark}
+                onPress={() => {
+                  setnavigationVisible(false);
+                  handleDefaultNaveSwitch(index.toString(), item.name);
+                }}
+              />
+            )}
+          />
+        </View>
       )}
 
       {/* <Text
@@ -269,7 +316,7 @@ const SettingsScreen = () => {
   );
 };
 
-// MenuItem Component
+// helper
 const MenuItem = ({
   itemName,
   onPress,
