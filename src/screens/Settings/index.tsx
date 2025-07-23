@@ -142,6 +142,7 @@ const SettingsScreen = () => {
           dropdownRef.current?.measureInWindow((x, y, width, height) => {
             setDropdownTop(y - 20); // position list just below the touchable
             setVisible(!visible);
+            setnavigationVisible(false);
           });
         }}
         style={{ marginBottom: 10 }}
