@@ -36,3 +36,37 @@ export const fileIcons: any = {
     color: '#1992fa',
   },
 };
+
+// Known navigation apps with Android package names and iOS URL schemes
+export const NAVIGATION_APPS = [
+  {
+    name: 'Google Maps',
+    androidPackage: 'com.google.android.apps.maps',
+    iosScheme: 'comgooglemaps://',
+  },
+  {
+    name: 'Waze',
+    androidPackage: 'com.waze',
+    iosScheme: 'waze://',
+  },
+  {
+    name: 'HERE WeGo',
+    androidPackage: 'com.here.app.maps',
+    iosScheme: 'here-route://',
+  },
+  {
+    name: 'Sygic',
+    androidPackage: 'com.sygic.aura',
+    iosScheme: 'com.sygic.aura://',
+  },
+  {
+    name: 'MAPS.ME',
+    androidPackage: 'com.mapswithme.maps.pro',
+    iosScheme: 'mapsme://',
+  },
+  {
+    name: 'Apple Maps',
+    androidPackage: '', // not applicable
+    iosScheme: 'maps://',
+  },
+];

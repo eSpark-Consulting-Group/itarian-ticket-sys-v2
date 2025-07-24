@@ -1,36 +1,56 @@
-import { Linking, Platform } from 'react-native';
-// import {
-//   AppInstalledChecker,
-//   // @ts-ignore
-// } from 'react-native-check-app-install';
+import { Linking, Platform, NativeModules } from 'react-native';
+
 import * as ImagePicker from 'react-native-image-crop-picker';
 // import DocumentPicker, { types } from 'react-native-document-picker';
 import { ShortcutItem } from 'react-native-quick-actions';
 import { showMessage } from 'react-native-flash-message';
 import { Buffer } from 'buffer';
 
-import { alert_Dur } from '../constants';
+import { alert_Dur, NAVIGATION_APPS } from '../constants';
 import { createUser } from '../screens/SendFeedback/utils';
 
-import { showMessage as flashShowMessage, MessageOptions } from 'react-native-flash-message';
+import {
+  showMessage as flashShowMessage,
+  MessageOptions,
+} from 'react-native-flash-message';
 import { initialWindowMetrics } from 'react-native-safe-area-context';
 
-export const getNavigtionApps = async () => {
-  const Androidpackages = [
-    { package: 'com.waze', name: 'Waze' },
-    { package: 'com.google.android.apps.maps', name: 'Google Maps' },
-  ];
-  const arr: any = [];
-  // for (let index = 0; index < Androidpackages.length; index++) {
-  //   const element: any = Androidpackages[index];
-  //   const isInstalled = await AppInstalledChecker.checkPackageName(
-  //     element.package,
-  //   );
-  //   if (isInstalled) {
-  //     arr.push(element);
-  //   }
-  // }
-  return arr;
+type NavigationApp = {
+  name: string;
+  package: string;
+};
+const { NavigationAppChecker } = NativeModules as {
+  NavigationAppChecker: {
+    getInstalledNavigationApps(): Promise<{ name: string; package: string }[]>;
+  };
+};
+
+export const getNavigtionApps = async (): Promise<NavigationApp[]> => {
+  if (Platform.OS === 'android') {
+    try {
+      return await NavigationAppChecker.getInstalledNavigationApps();
+    } catch (err) {
+      console.error('Error checking Android apps:', err);
+      return [];
+    }
+  } else if (Platform.OS === 'ios') {
+    const results: NavigationApp[] = [];
+
+    for (const app of NAVIGATION_APPS) {
+      try {
+        const supported = await Linking.canOpenURL(app.iosScheme);
+        if (supported) {
+          results.push({ name: app.name, package: app.iosScheme });
+        }
+      } catch (e) {
+        // Ignore
+      }
+    }
+    console.log('check ===', results);
+    return results;
+  }
+
+  return [];
 };
 
 export const uploadProfilePicToCanny = async (
@@ -435,7 +455,8 @@ export function create_UUID() {
 
 export const showMessageSafe = (options: MessageOptions) => {
   // Show top inset for iOS or Android with notch
-  const hasNotch = Platform.OS === 'android' && (initialWindowMetrics?.insets.top || 0) > 24;
+  const hasNotch =
+    Platform.OS === 'android' && (initialWindowMetrics?.insets.top || 0) > 24;
   flashShowMessage({
     statusBarHeight:
       Platform.OS === 'ios'
