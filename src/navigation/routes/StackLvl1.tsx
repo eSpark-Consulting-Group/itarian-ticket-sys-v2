@@ -31,7 +31,11 @@ import SlaPlanDetails from '../../screens/SlaPlans/View/SlaPlans/Details';
 import Company from '../../screens/Companies/View/Company';
 import MyStatus from '../../screens/Profile/View/Profile/MyStatus';
 import { userStore } from '../../stores/userStore';
-import { checkValidations, create_UUID, dataFormatter } from '../../utils/helperFunctions';
+import {
+  checkValidations,
+  create_UUID,
+  dataFormatter,
+} from '../../utils/helperFunctions';
 import { Post } from '../../screens';
 import { addTeam, updateTeam } from '../../screens/Teams/utils/functions';
 import {
@@ -95,7 +99,8 @@ const StackLvl1 = ({ route, navigation }: any) => {
           color: '#fff',
         },
         animation: 'slide_from_bottom',
-      }}>
+      }}
+    >
       <Stack.Screen
         name="MyStatus"
         component={MyStatus}
@@ -204,7 +209,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
                     globalStates,
                     updateTicket,
                     obj,
-                    "Ticket Updated Successfully",
+                    'Ticket Updated Successfully',
                   );
                 }}
                 size={30}
@@ -598,7 +603,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
         name="SlaPlanDetails"
         component={SlaPlanDetails}
         options={({ route, navigation }: any) => ({
-          title: 'SlaPlan Details',
+          title: 'Sla Plan Details',
           headerStyle: { backgroundColor: colors.primary },
           headerLeft: () => (
             <II
@@ -882,7 +887,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
         name="HelpTopicDetails"
         component={HelpTopicDetails}
         options={({ route, navigation }: any) => ({
-          title: 'HelpTopic Details',
+          title: 'Help Topic Details',
           headerStyle: { backgroundColor: colors.primary },
           headerLeft: () => (
             <II
@@ -964,7 +969,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
         name="CannedResponseDetails"
         component={CannedResponseDetails}
         options={({ route, navigation }: any) => ({
-          title: 'CannedResponse Details',
+          title: 'Canned Response Details',
           headerStyle: { backgroundColor: colors.primary },
           headerLeft: () => (
             <II
@@ -1385,7 +1390,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
         name="NewHelpTopic"
         component={NewHelpTopic}
         options={({ route, navigation }: any) => ({
-          title: 'New HelpTopic',
+          title: 'New Help Topic',
           headerStyle: { backgroundColor: colors.primary },
           headerLeft: () => (
             <II
@@ -1627,13 +1632,13 @@ const StackLvl1 = ({ route, navigation }: any) => {
                           return {
                             id: val?.id,
                             type: 'teams',
-                          }
+                          };
                         }),
                       },
                     },
                   },
                 };
-                
+
                 checkValidations(
                   navigation,
                   route,
@@ -1715,13 +1720,13 @@ const StackLvl1 = ({ route, navigation }: any) => {
                           return {
                             id: val?.id,
                             type: 'teams',
-                          }
+                          };
                         }),
                       },
                     },
                   },
                 };
-                
+
                 checkValidations(
                   navigation,
                   route,

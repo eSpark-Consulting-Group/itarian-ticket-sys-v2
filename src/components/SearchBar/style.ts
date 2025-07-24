@@ -34,6 +34,15 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'space-between',
   },
+  menuStyle: {
+    marginTop: 10,
+    height: '80%', //50
+    borderRadius: 12,
+    borderWidth: 2,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
 });
 
 export default styles;
