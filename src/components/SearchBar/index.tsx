@@ -18,7 +18,6 @@ import {
 
 import styles from './style';
 import { globalState } from '../../stores/globalAppState';
-import { CstmPressable } from '../CstmPressable';
 
 const SearchBar = ({
   withTag = false,
@@ -40,7 +39,6 @@ const SearchBar = ({
   searchType?: string;
 }) => {
   const { colors, dark }: Theme = useTheme();
-  const [visible, setVisible] = useState(false);
   const [check, setCheckValue] = useState('tickets');
 
   const searchTagValue: State<string> = useHookstate(globalState.searchTag);
@@ -54,40 +52,6 @@ const SearchBar = ({
   }, [searchType]);
 
   const onChangeSearch = (query: string): void => setChangeText(query);
-  const showMenu = (): void => setVisible(!visible);
-  const hideMenu = (): void => setVisible(false);
-
-  function setCheck(value: string): void {
-    hideMenu(); // first hide
-    setTimeout(() => {
-      setCheckValue(value);
-      searchTagValue.set(value);
-    }, 0);
-    switch (value) {
-      case 'tickets':
-        setCheckValue(value);
-        setVisible(false);
-        searchTagValue.set(value);
-        return;
-      case 'organizations':
-        setCheckValue(value);
-        setVisible(false);
-        searchTagValue.set(value);
-        return;
-      case 'users':
-        setCheckValue(value);
-        setVisible(false);
-        searchTagValue.set(value);
-        return;
-      case 'staff':
-        setCheckValue(value);
-        setVisible(false);
-        searchTagValue.set(value);
-        return;
-      default:
-        return;
-    }
-  }
 
   function renderTag(value: string): React.ReactNode {
     switch (value) {
@@ -161,14 +125,8 @@ const SearchBar = ({
               customStyles={{
                 TriggerTouchableComponent: TouchableOpacity,
                 triggerWrapper: {
-                  marginTop: 10,
-                  height: '80%', //50
-                  borderRadius: 12,
-                  borderWidth: 2,
+                  ...styles.menuStyle,
                   borderColor: colors.primary,
-                  flexDirection: 'row',
-                  justifyContent: 'space-evenly',
-                  alignItems: 'center',
                 },
               }}
             >
