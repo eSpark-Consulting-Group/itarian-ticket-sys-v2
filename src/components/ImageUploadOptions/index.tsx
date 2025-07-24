@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { JSX } from 'react';
 import { StyleSheet, Text, View, Modal } from 'react-native';
 import { Theme, useTheme } from '@react-navigation/native';
 import II from 'react-native-vector-icons/Ionicons';

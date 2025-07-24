@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList } from 'react-native';
-import { Theme, useTheme } from '@react-navigation/native';
+import { Theme, useIsFocused, useTheme } from '@react-navigation/native';
 import { useHookstate, State } from '@hookstate/core';
 import { Divider } from 'react-native-paper';
 
@@ -44,11 +44,13 @@ const Search = ({ route, navigation }: any) => {
   const [filteredTickets, setFilteredTickets] = useState(tickets?.get());
 
   const searchTagValue: State<string> = useHookstate(globalState.searchTag);
-
+  const isFocused = useIsFocused()
   useEffect(() => {
+    if(!isFocused) return;
     setFilteredTickets(tickets?.get());
+    setSearchValue('')
     fetchTickets();
-  }, []);
+  }, [isFocused]);
 
   const fetchTickets = async () => {
     await getAllTickets();

@@ -49,6 +49,7 @@
     "react-native-pager-view": "^6.8.1",
     "react-native-paper": "^5.14.5",
     "react-native-pell-rich-editor": "^1.10.0",
+    "react-native-permissions": "^5.4.2",
     "react-native-pinchable": "^0.2.1",
     "react-native-qrcode-scanner": "^1.5.5",
     "react-native-quick-actions": "^0.3.13",
