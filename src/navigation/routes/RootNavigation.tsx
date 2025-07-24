@@ -21,6 +21,7 @@ import NetInfo from '@react-native-community/netinfo';
 import { showMessage } from 'react-native-flash-message';
 import { alert_Dur } from '../../constants';
 import { SafeAreaView } from 'react-native';
+import { MenuProvider } from 'react-native-popup-menu';
 
 export type RootStackParamList = {
   Login: undefined;
@@ -120,61 +121,64 @@ const App = () => {
             themeValue.get() === 'light' ? LightTheme.colors : DarkTheme.colors
           }
         />
-        <NavigationContainer
-          linking={{
-            prefixes: ['app://'],
-          }}
-          theme={themeValue.get() === 'light' ? LightTheme : DarkTheme}
-        >
-          <Stack.Navigator initialRouteName={pinWiseInitial}>
-            {!user.get()?.email ? (
-              <>
-                <Stack.Screen
-                  name="Login"
-                  component={Login}
-                  options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                  name="Pin"
-                  component={PinScreen}
-                  options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                  name="OTPScreen"
-                  component={OTPScreen}
-                  options={{ headerShown: false }}
-                />
-              </>
-            ) : (
-              <Stack.Group
-                screenOptions={{
-                  presentation: 'modal',
-                  animation: 'slide_from_bottom',
-                }}>
-                <Stack.Screen
-                  name="Draw"
-                  component={Drawer}
-                  options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                  name="Stack1"
-                  component={StackLvl1}
-                  options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                  name="Stack2"
-                  component={StackLvl2}
-                  options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                  name="Stack3"
-                  component={StackLvl3}
-                  options={{ headerShown: false }}
-                />
-              </Stack.Group>
-            )}
-          </Stack.Navigator>
-        </NavigationContainer>
+        <MenuProvider>
+          <NavigationContainer
+            linking={{
+              prefixes: ['app://'],
+            }}
+            theme={themeValue.get() === 'light' ? LightTheme : DarkTheme}
+          >
+            <Stack.Navigator initialRouteName={pinWiseInitial}>
+              {!user.get()?.email ? (
+                <>
+                  <Stack.Screen
+                    name="Login"
+                    component={Login}
+                    options={{ headerShown: false }}
+                  />
+                  <Stack.Screen
+                    name="Pin"
+                    component={PinScreen}
+                    options={{ headerShown: false }}
+                  />
+                  <Stack.Screen
+                    name="OTPScreen"
+                    component={OTPScreen}
+                    options={{ headerShown: false }}
+                  />
+                </>
+              ) : (
+                <Stack.Group
+                  screenOptions={{
+                    presentation: 'modal',
+                    animation: 'slide_from_bottom',
+                  }}
+                >
+                  <Stack.Screen
+                    name="Draw"
+                    component={Drawer}
+                    options={{ headerShown: false }}
+                  />
+                  <Stack.Screen
+                    name="Stack1"
+                    component={StackLvl1}
+                    options={{ headerShown: false }}
+                  />
+                  <Stack.Screen
+                    name="Stack2"
+                    component={StackLvl2}
+                    options={{ headerShown: false }}
+                  />
+                  <Stack.Screen
+                    name="Stack3"
+                    component={StackLvl3}
+                    options={{ headerShown: false }}
+                  />
+                </Stack.Group>
+              )}
+            </Stack.Navigator>
+          </NavigationContainer>
+        </MenuProvider>
       </SafeAreaView>
     </SafeAreaProvider>
   );
