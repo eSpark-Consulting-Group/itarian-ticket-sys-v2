@@ -1,9 +1,7 @@
 import { useHookstate } from '@hookstate/core';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { View } from 'react-native';
-import { showMessage } from 'react-native-flash-message';
-import { ScrollView } from 'react-native-gesture-handler';
+import { View, ScrollView } from 'react-native';
 import { CstmButton, Loader, SingleLineField } from '../../components';
 import { alert_Dur } from '../../constants';
 import { addCollaborator } from '../../screens/Agenda/utils/functions';

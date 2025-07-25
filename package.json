@@ -8,7 +8,8 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "assembleRelease": "cd android && ./gradlew clean && ./gradlew assembleRelease"
   },
   "dependencies": {
     "@hookstate/core": "^4.0.2",
@@ -37,6 +38,7 @@
     "react-native-biometrics": "^3.0.1",
     "react-native-bootsplash": "^6.3.10",
     "react-native-calendars": "^1.1313.0",
+    "react-native-codegen": "^0.70.7",
     "react-native-countdown-component": "^2.7.1",
     "react-native-dotenv": "^3.4.11",
     "react-native-fingerprint-scanner": "^6.0.0",
