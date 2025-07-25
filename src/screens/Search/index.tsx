@@ -21,6 +21,7 @@ import { companyStore } from '../../stores/companyStore';
 import { ticketStore } from '../../stores/ticketStore';
 import { getAllTickets, getTicketsByUserId } from '../Agenda/utils/functions';
 import { RenderContacts } from '../Contacts/Screens/users';
+import { MenuProvider } from 'react-native-popup-menu';
 
 const Search = ({ route, navigation }: any) => {
   const { colors, dark }: Theme = useTheme();
@@ -134,21 +135,23 @@ const Search = ({ route, navigation }: any) => {
     }
   }, [clear]);
 
-  const CenterLabel = (): JSX.Element => {
+  const CenterLabel = () => {
     return (
       <>
         <Text
           style={{
             color: colors.text,
             ...styles.emptySearchLabel,
-          }}>
+          }}
+        >
           What would you like to Search for?
         </Text>
         <Text
           style={{
             color: colors.text,
             ...styles.emptySearchCriteria,
-          }}>
+          }}
+        >
           {`Locate Organizations, Users,\n or Tickets.`}
         </Text>
       </>
@@ -164,7 +167,8 @@ const Search = ({ route, navigation }: any) => {
       case 'tickets':
         return (
           <View
-            style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+          >
             {filteredTickets.length > 0 ? (
               <FlatList
                 data={filteredTickets || []}
@@ -218,39 +222,43 @@ const Search = ({ route, navigation }: any) => {
   };
 
   return (
-    <View style={styles.container}>
-      <View
-        style={{
-          backgroundColor: dark ? '#000000' : '#ffffff',
-          ...styles.header,
-        }}>
-        <SearchBar
-          withTag={true}
-          searchType={type}
-          placeholder={'Search Contacts'}
-          fontSize={'small'}
-          value={searchValue}
-          setChangeText={value => setSearchValue(value)}
-          onSubmit={handleSubmit}
-          onClear={handleClear}
-        />
-      </View>
-      <View
-        style={{
-          backgroundColor: colors.background,
-          ...styles.content,
-        }}>
-        {isSearching ? (
-          loading ? (
-            <SimpleLoader />
+    <MenuProvider>
+      <View style={styles.container}>
+        <View
+          style={{
+            backgroundColor: dark ? '#000000' : '#ffffff',
+            ...styles.header,
+          }}
+        >
+          <SearchBar
+            withTag={true}
+            searchType={type}
+            placeholder={'Search Contacts'}
+            fontSize={'small'}
+            value={searchValue}
+            setChangeText={value => setSearchValue(value)}
+            onSubmit={handleSubmit}
+            onClear={handleClear}
+          />
+        </View>
+        <View
+          style={{
+            backgroundColor: colors.background,
+            ...styles.content,
+          }}
+        >
+          {isSearching ? (
+            loading ? (
+              <SimpleLoader />
+            ) : (
+              handleRenderList()
+            )
           ) : (
-            handleRenderList()
-          )
-        ) : (
-          <CenterLabel />
-        )}
+            <CenterLabel />
+          )}
+        </View>
       </View>
-    </View>
+    </MenuProvider>
   );
 };
 
