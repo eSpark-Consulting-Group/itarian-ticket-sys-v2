@@ -31,6 +31,12 @@ npm run android
 # OR using Yarn
 yarn android
 ```
+### FOR CREATING APK RUN
+
+```sh
+yarn clean-build-release
+```
+
 
 ### iOS
 

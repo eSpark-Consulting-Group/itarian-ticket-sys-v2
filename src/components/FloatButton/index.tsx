@@ -21,8 +21,9 @@ const FloatButton = ({
     <>
       {AdditionalButtons ? (
         <FAB.Group
-          theme={{ colors: { background: '#111' } }}
+          theme={{ }}
           fabStyle={styles.floatGroup}
+          backdropColor='rgba(0, 0, 0, 0.65)'
           open={showBtns}
           icon={showBtns ? 'close' : 'plus'}
           color="#fff"
@@ -30,6 +31,7 @@ const FloatButton = ({
           onStateChange={() => ShowMoreBtns()}
           visible={true}
           onPress={() => ShowMoreBtns()}
+          variant='surface'
         />
       ) : (
         <FAB

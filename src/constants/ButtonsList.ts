@@ -15,7 +15,7 @@ const AdditionalButtonStyle = {
 export const SchAdditionalButtons: Array<AdditionalButtons> = [
   {
     icon: 'tag-plus-outline',
-    label: 'Add Ticket',
+    label: ' Add Ticket ',
     onPress: () => {},
     ...AdditionalButtonStyle,
   },
@@ -24,7 +24,7 @@ export const SchAdditionalButtons: Array<AdditionalButtons> = [
 export const UnschAdditionalButtons: Array<AdditionalButtons> = [
   {
     icon: 'tag-plus-outline',
-    label: 'Add Ticket',
+    label: ' Add Ticket ',
     onPress: () => {},
     ...AdditionalButtonStyle,
   },
@@ -33,7 +33,7 @@ export const UnschAdditionalButtons: Array<AdditionalButtons> = [
 export const STicketsAdditionalButtons: Array<AdditionalButtons> = [
   {
     icon: 'tag-plus-outline',
-    label: 'Add Ticket',
+    label: ' Add Ticket ',
     onPress: () => {},
     ...AdditionalButtonStyle,
   },
@@ -42,13 +42,13 @@ export const STicketsAdditionalButtons: Array<AdditionalButtons> = [
 export const NotesAdditionalButtons: Array<AdditionalButtons> = [
   {
     icon: 'clipboard-plus',
-    label: 'Standard Note',
+    label: ' Standard Note ',
     onPress: () => {},
     ...AdditionalButtonStyle,
   },
   {
     icon: 'clock-plus-outline',
-    label: 'Time Stamp',
+    label: ' Time Stamp ',
     onPress: () => {},
     ...AdditionalButtonStyle,
   },
@@ -57,19 +57,19 @@ export const NotesAdditionalButtons: Array<AdditionalButtons> = [
 export const AttachmentAdditionalButtons: Array<AdditionalButtons> = [
   {
     icon: 'file-search-outline',
-    label: 'Add Files',
+    label: ' Add Files ',
     onPress: () => {},
     ...AdditionalButtonStyle,
   },
   {
     icon: 'image',
-    label: 'Choose Image',
+    label: ' Choose Image ',
     onPress: () => {},
     ...AdditionalButtonStyle,
   },
   {
     icon: 'camera-outline',
-    label: 'Take Photo',
+    label: ' Take Photo ',
     onPress: () => {},
     ...AdditionalButtonStyle,
   },
@@ -78,13 +78,13 @@ export const AttachmentAdditionalButtons: Array<AdditionalButtons> = [
 export const CollaboratorAdditionalButtons: Array<AdditionalButtons> = [
   {
     icon: 'account-search',
-    label: 'Search Existing User',
+    label: ' Search Existing User ',
     onPress: () => {},
     ...AdditionalButtonStyle,
   },
   {
     icon: 'account-plus',
-    label: 'Add New User',
+    label: ' Add New User ',
     onPress: () => {},
     ...AdditionalButtonStyle,
   },

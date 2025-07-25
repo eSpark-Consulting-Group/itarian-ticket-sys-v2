@@ -6,9 +6,7 @@ import {
   useTheme,
 } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { View } from 'react-native';
-import { showMessage } from 'react-native-flash-message';
-import { ScrollView } from 'react-native-gesture-handler';
+import { View, ScrollView } from 'react-native';
 import {
   CstmButton,
   Loader,

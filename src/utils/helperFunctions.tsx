@@ -1,6 +1,7 @@
 import { Linking, Platform, NativeModules } from 'react-native';
 
 import * as ImagePicker from 'react-native-image-crop-picker';
+import { check, request, PERMISSIONS, RESULTS, openSettings } from 'react-native-permissions';
 // import DocumentPicker, { types } from 'react-native-document-picker';
 import { ShortcutItem } from 'react-native-quick-actions';
 import { showMessage } from 'react-native-flash-message';
@@ -23,6 +24,21 @@ const { NavigationAppChecker } = NativeModules as {
   NavigationAppChecker: {
     getInstalledNavigationApps(): Promise<{ name: string; package: string }[]>;
   };
+};
+
+export const showMessageSafe = (options: MessageOptions) => {
+  // Show top inset for iOS or Android with notch
+  const hasNotch =
+    Platform.OS === 'android' && (initialWindowMetrics?.insets.top || 0) > 24;
+  flashShowMessage({
+    statusBarHeight:
+      Platform.OS === 'ios'
+        ? initialWindowMetrics?.insets.top || 0
+        : hasNotch
+        ? initialWindowMetrics?.insets.top || 0
+        : undefined,
+    ...options,
+  });
 };
 
 export const getNavigtionApps = async (): Promise<NavigationApp[]> => {
@@ -98,20 +114,21 @@ export const uploadProfilePicToCanny = async (
             });
           }
           if (result.error) {
-            showMessageSafe({
-              message: result.error,
-              type: 'danger',
-              icon: 'auto',
-            });
+            console.log('Updated Sucessfully', result);
+            // showMessageSafe({
+            //   message: result.error,
+            //   type: 'danger',
+            //   icon: 'auto',
+            // });
           }
         })
         .catch(error => {
           console.log('Image not uploaded successfully', error);
-          showMessageSafe({
-            message: error[0],
-            type: 'danger',
-            icon: 'auto',
-          });
+          // showMessageSafe({
+          //   message: error?.message ?? error?.[0],
+          //   type: 'danger',
+          //   icon: 'auto',
+          // });
         });
     })(path);
   } catch (error) {
@@ -193,18 +210,70 @@ export const documentPicker = async () => {
   // }
 };
 
-export const cameraPicker = async ({ cropping = false }) => {
+  // Camera permission handler for both iOS and Android
+export const cameraPicker = async (options: { cropping?: boolean } = {}) => {
   try {
-    const result = await ImagePicker.openCamera({
-      width: 300,
-      height: 400,
-      cropping: cropping,
-      compressImageQuality: 0.5,
-      includeBase64: true,
-    });
-    return result;
-  } catch (error) {
+    const cropping = options.cropping ?? false;
+
+    let permissionType;
+    if (Platform.OS === 'ios') {
+      permissionType = PERMISSIONS.IOS.CAMERA;
+    } else if (Platform.OS === 'android') {
+      permissionType = PERMISSIONS.ANDROID.CAMERA;
+    } else {
+      showMessageSafe({
+        message: 'Camera not supported on this platform.',
+        type: 'danger',
+        icon: 'auto',
+      });
+      return;
+    }
+
+    // Check current permission status
+    let status = await check(permissionType);
+
+    // If denied, request permission
+    if (status === RESULTS.DENIED) {
+      status = await request(permissionType);
+    }
+
+    // If blocked, show message and redirect to settings
+    if (status === RESULTS.BLOCKED) {
+      showMessageSafe({
+        message: 'Camera permission is blocked. Please enable it in settings.',
+        type: 'danger',
+        icon: 'auto',
+      });
+      openSettings();
+      return;
+    }
+
+    // If granted, open camera
+    if (status === RESULTS.GRANTED) {
+      const result = await ImagePicker.openCamera({
+        width: 300,
+        height: 400,
+        cropping: cropping,
+        compressImageQuality: 0.5,
+        includeBase64: true,
+      });
+      return result;
+    } else {
+      showMessageSafe({
+        message: 'Camera permission not granted.',
+        type: 'danger',
+        icon: 'auto',
+      });
+      return;
+    }
+  } catch (error: any) {
     console.log('cameraPicker error', error);
+    showMessageSafe({
+      message: error?.message || 'Camera error',
+      type: 'danger',
+      icon: 'auto',
+    });
+    return;
   }
 };
 
@@ -452,18 +521,3 @@ export function create_UUID() {
   );
   return uuid;
 }
-
-export const showMessageSafe = (options: MessageOptions) => {
-  // Show top inset for iOS or Android with notch
-  const hasNotch =
-    Platform.OS === 'android' && (initialWindowMetrics?.insets.top || 0) > 24;
-  flashShowMessage({
-    statusBarHeight:
-      Platform.OS === 'ios'
-        ? initialWindowMetrics?.insets.top || 0
-        : hasNotch
-        ? initialWindowMetrics?.insets.top || 0
-        : undefined,
-    ...options,
-  });
-};
