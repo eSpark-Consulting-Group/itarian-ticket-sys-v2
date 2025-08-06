@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-paper/src/components/FAB/FABGroup.tsx b/node_modules/react-native-paper/src/components/FAB/FABGroup.tsx
+index ca263e3..dbc7320 100644
+--- a/node_modules/react-native-paper/src/components/FAB/FABGroup.tsx
++++ b/node_modules/react-native-paper/src/components/FAB/FABGroup.tsx
+@@ -453,7 +453,7 @@ const FABGroup = ({
+                         variant="titleMedium"
+                         importantForAccessibility="no-hide-descendants"
+                         accessibilityElementsHidden={true}
+-                        style={[labelTextStyle, it.labelStyle]}
++                        style={[labelTextStyle, it.labelStyle, {borderRadius: 3, paddingHorizontal: 6, paddingVertical: 4}]}
+                         maxFontSizeMultiplier={it.labelMaxFontSizeMultiplier}
+                       >
+                         {it.label}

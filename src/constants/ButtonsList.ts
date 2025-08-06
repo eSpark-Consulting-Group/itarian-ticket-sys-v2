@@ -3,7 +3,7 @@ import { AdditionalButtons } from '../types';
 const AdditionalButtonStyle = {
   color: '#fff',
   labelTextColor: '#000000c2',
-  labelStyle: { backgroundColor: '#fff' },
+  labelStyle: { backgroundColor: '#fff', bordarRadius: 1000 },
   style: {
     backgroundColor: '#28648f',
     borderRadius: 1000,
