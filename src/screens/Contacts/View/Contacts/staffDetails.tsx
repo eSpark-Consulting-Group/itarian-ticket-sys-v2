@@ -314,7 +314,7 @@ export default function StaffDetails() {
         contentContainerStyle={{ alignItems: 'center' }}>
         {dataSource?.map((item, index) => (
           <SingleLineField
-            key={`${create_UUID()}`}
+            key={item?.key ?? item?.title + index}
             subTitle={item.isRequired ? item.subTitle + '*' : item.subTitle}
             title={item.title}
             inputable={item.inputable}
