@@ -63,7 +63,7 @@ export default function CstmTabBar(props: any) {
         style={{
           flexDirection: 'row',
           backgroundColor: colors.background,
-          zIndex: -1,
+          // zIndex: -1,
         }}>
         <CstmPressable
           onPress={() => {
@@ -91,7 +91,7 @@ export default function CstmTabBar(props: any) {
       <View
         style={{
           ...styles.container,
-          // backgroundColor: colors.background,
+          backgroundColor: colors.background,
         }}>
         <View>
           <View
@@ -104,6 +104,7 @@ export default function CstmTabBar(props: any) {
                 {
                   width: handleWidth,
                   transform: [{ translateX: translateValue }],
+                  zIndex: 2
                 },
               ]}>
               <View

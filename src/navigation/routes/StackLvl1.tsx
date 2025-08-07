@@ -141,7 +141,9 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="chevron-back"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => {
+                navigation.navigate('Draw', {screen: 'Agenda'})
+              }}
             />
           ),
           headerRight: () => (

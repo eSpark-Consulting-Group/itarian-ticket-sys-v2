@@ -520,7 +520,7 @@ const SendFeedbackScreen = () => {
                     clearPostSearch();
                   }}>
                   <Ionicons
-                    name="md-chevron-back-sharp"
+                    name="chevron-back-sharp"
                     style={{ alignSelf: 'center', textAlignVertical: 'center' }}
                     color={colors.primary}
                     size={28}

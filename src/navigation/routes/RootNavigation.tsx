@@ -105,12 +105,12 @@ const App = () => {
     })
     .catch(err => console.log('err', err));
 
-  const pinWiseInitial = pinCode.get() ? 'Pin' : 'Login';
+  const pinWiseInitial = pinCode.get() ? 'Pin' : (!user.get()?.email ? 'Login' : 'Draw');
 
   console.log('isConnected?', isConnected, user.get()?.email);
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={{ flex: 1 }}>
+      {/* <SafeAreaView style={{ flex: 1 }}> */}
         <AppStatusBar
           backgroundColor={LightTheme?.colors.primary}
           barStyle="light-content"
@@ -179,7 +179,7 @@ const App = () => {
             </Stack.Navigator>
           </NavigationContainer>
         </MenuProvider>
-      </SafeAreaView>
+      {/* </SafeAreaView> */}
     </SafeAreaProvider>
   );
 };
