@@ -104,7 +104,8 @@ export default function CstmTabBar(props: any) {
                 {
                   width: handleWidth,
                   transform: [{ translateX: translateValue }],
-                  zIndex: 2
+                  zIndex: 2,
+                  paddingHorizontal: 3,
                 },
               ]}>
               <View

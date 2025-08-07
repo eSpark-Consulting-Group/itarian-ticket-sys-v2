@@ -21,6 +21,7 @@ import { companyStore } from '../../stores/companyStore';
 import { ticketStore } from '../../stores/ticketStore';
 import { getAllTickets, getTicketsByUserId } from '../Agenda/utils/functions';
 import { RenderContacts } from '../Contacts/Screens/users';
+import { RenderContacts as RenderStaffs } from '../Contacts/Screens/staffs';
 import { MenuProvider } from 'react-native-popup-menu';
 
 const Search = ({ route, navigation }: any) => {
@@ -213,7 +214,7 @@ const Search = ({ route, navigation }: any) => {
       case 'users':
         return <RenderContacts listData={filteredContacts} />;
       case 'staff':
-        return <RenderContacts listData={filteredStaffs} />;
+        return <RenderStaffs listData={filteredStaffs} />;
       case 'organizations':
         return <RenderCompanies listData={filteredCompanies} />;
       default:

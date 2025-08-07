@@ -86,6 +86,9 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
     Platform.OS === 'android' && (initialWindowMetrics?.insets.top || 0) > 24
       ? initialWindowMetrics?.insets.top
       : 0;
+
+  console.log('userDetails', userDetails);
+  console.log('user', user.get());
   return (
     <SafeAreaView
       style={{
@@ -244,8 +247,14 @@ const Draw = () => {
       });
       setCalCurrMember(calCurrMember);
     }
-    badgeApiCallForGlobalList();
+   fetchBadgeApiCallForGlobalList()
   }, []);
+
+  const fetchBadgeApiCallForGlobalList = async () => {
+    setIsFetching(true);
+    await badgeApiCallForGlobalList();
+    setIsFetching(false);
+  }
 
   return (
     <>

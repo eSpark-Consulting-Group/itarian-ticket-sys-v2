@@ -300,8 +300,8 @@ const Profile = ({ navigation }: any) => {
             lname: data?.last_name,
             userId: user.get().userId,
           });
-          setLoader(false);
           await getCurrentUser();
+          setLoader(false);
           fetchUserDetails();
         }}
       />
