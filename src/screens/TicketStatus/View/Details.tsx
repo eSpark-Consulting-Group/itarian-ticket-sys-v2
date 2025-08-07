@@ -129,7 +129,7 @@ export default function Details() {
         <View>
           <Text
             style={{
-              fontFamily: Platform.OS == "android" ? 'fontyawesome' : 'FontAwesome',
+              fontFamily: 'FontAwesome',
               color: colors.text,
               fontSize: 18,
               textAlignVertical: 'center',
@@ -321,7 +321,7 @@ export default function Details() {
         <View>
           <Text
             style={{
-              fontFamily: Platform.OS === 'android' ? 'fontyawesome' : 'FontAwesome',
+              fontFamily: 'FontAwesome',
               color: colors.text,
               fontSize: 18,
               textAlignVertical: 'center',

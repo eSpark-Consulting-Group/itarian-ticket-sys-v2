@@ -158,7 +158,7 @@ const CstmItemSelector = ({ route, navigation }: any) => {
                     {item.code && (
                       <Text
                         style={{
-                          fontFamily: Platform.OS === 'android' ? 'fontyawesome' : 'FontAwesome',
+                          fontFamily:'FontAwesome',
                           color: colors.text,
                           fontSize: 18,
                           textAlignVertical: 'center',
