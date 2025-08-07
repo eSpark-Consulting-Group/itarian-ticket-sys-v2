@@ -146,7 +146,7 @@ const CstmItemSelector = ({ route, navigation }: any) => {
                 title={item?.name}
                 onPress={() => selectItem(item?.id)}
                 leftChild={
-                  <View style={{ flexDirection: 'row' }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Checkbox
                       status={isChecked ? 'checked' : 'unchecked'}
                       color={colors.primary}
