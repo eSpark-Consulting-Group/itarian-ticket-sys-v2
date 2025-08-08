@@ -7,7 +7,7 @@ import { Theme, useTheme } from '@react-navigation/native';
 import { State, useHookstate } from '@hookstate/core';
 import moment from 'moment';
 
-import { goBack, saveStatus } from '../utils/headerFunctions';
+import { popToTop, saveStatus } from '../utils/headerFunctions';
 import {
   ServiceTickets as STickets,
   NewCompany,
@@ -100,6 +100,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
         },
         animation: 'slide_from_bottom',
       }}
+      
     >
       <Stack.Screen
         name="MyStatus"
@@ -115,7 +116,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
                 name="close"
                 style={{ right: 6 }}
                 color={'#fff'}
-                onPress={() => goBack(navigation)}
+                onPress={() => popToTop(navigation)}
               />
             );
           },
@@ -142,7 +143,8 @@ const StackLvl1 = ({ route, navigation }: any) => {
               style={{ right: 6 }}
               color={'#fff'}
               onPress={() => {
-                navigation.navigate('Draw', {screen: 'Agenda'})
+                // navigation.navigate('Draw', {screen: 'Agenda'})
+                navigation.popToTop()
               }}
             />
           ),
@@ -234,7 +236,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="chevron-back"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => (
@@ -293,7 +295,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="chevron-back"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation?.goBack()}
+              onPress={() => navigation?.popToTop()}
             />
           ),
           headerRight: () => (
@@ -351,7 +353,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="chevron-back"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation?.goBack()}
+              onPress={() => navigation?.popToTop()}
             />
           ),
           headerRight: () => (
@@ -405,7 +407,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="chevron-back"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => (
@@ -458,7 +460,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="close"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => (
@@ -542,7 +544,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="close"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
         })}
@@ -559,7 +561,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="close"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => (
@@ -613,7 +615,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="close"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => {
@@ -665,7 +667,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="close"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => {
@@ -718,7 +720,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="close"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => {
@@ -777,7 +779,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="close"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => {
@@ -842,7 +844,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="close"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => {
@@ -897,7 +899,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="close"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => {
@@ -979,7 +981,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="close"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => {
@@ -1029,7 +1031,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="close"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => {
@@ -1087,7 +1089,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="close"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
         })}
@@ -1104,7 +1106,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="chevron-back"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => (
@@ -1150,7 +1152,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="chevron-back"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => (
@@ -1195,7 +1197,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="chevron-back"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => (
@@ -1241,7 +1243,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="chevron-back"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => (
@@ -1294,7 +1296,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="chevron-back"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => (
@@ -1352,7 +1354,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="chevron-back"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => (
@@ -1400,7 +1402,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="chevron-back"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => (
@@ -1475,7 +1477,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="chevron-back"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => (
@@ -1527,7 +1529,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="chevron-back"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.popToTop()}
             />
           ),
           headerRight: () => (
@@ -1579,7 +1581,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="chevron-back"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation?.goBack()}
+              onPress={() => navigation?.popToTop()}
             />
           ),
           headerRight: () => (
@@ -1666,7 +1668,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
               name="chevron-back"
               style={{ right: 6 }}
               color={'#fff'}
-              onPress={() => navigation?.goBack()}
+              onPress={() => navigation?.popToTop()}
             />
           ),
           headerRight: () => (

@@ -367,7 +367,7 @@ export const checkValidations = async (
         duration: alert_Dur,
       });
       // console.log('Error Not Founded');
-      isGoback && navigation.goBack();
+      isGoback && navigation.popToTop();
     } else {
       console.log('Request Body:', JSON.stringify(data));
 
