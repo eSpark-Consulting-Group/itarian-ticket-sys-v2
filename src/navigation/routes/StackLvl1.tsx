@@ -7,7 +7,7 @@ import { Theme, useTheme } from '@react-navigation/native';
 import { State, useHookstate } from '@hookstate/core';
 import moment from 'moment';
 
-import { popToTop, saveStatus } from '../utils/headerFunctions';
+import { saveStatus } from '../utils/headerFunctions';
 import {
   ServiceTickets as STickets,
   NewCompany,
@@ -116,7 +116,7 @@ const StackLvl1 = ({ route, navigation }: any) => {
                 name="close"
                 style={{ right: 6 }}
                 color={'#fff'}
-                onPress={() => popToTop(navigation)}
+                onPress={() => navigation?.popToTop()}
               />
             );
           },
