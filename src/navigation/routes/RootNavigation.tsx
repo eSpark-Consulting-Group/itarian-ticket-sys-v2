@@ -22,6 +22,7 @@ import { showMessage } from 'react-native-flash-message';
 import { alert_Dur } from '../../constants';
 import { SafeAreaView } from 'react-native';
 import { MenuProvider } from 'react-native-popup-menu';
+import Splash from '../../screens/Splash/Splash';
 
 export type RootStackParamList = {
   Login: undefined;
@@ -46,21 +47,18 @@ const App = () => {
   const dNavName: State<string> = useHookstate(
     globalState.defaultnNavigationName,
   );
-
+  const [isFetching, setIsFetching] = useState<boolean>(true);
   const [isConnected, setIsConnected] = useState<any>(true);
   //! ----------------------------------------------------
 
   //! ---------------------------------------------------
 
   useEffect(() => {
+    fetchUserData()
     store.get('pinCode').then((res: any) => {
       if (res) {
         pinCode.set(res);
       }
-    });
-    store.get('user').then((res: any) => {
-      // console.log("res res user user", res)
-      if (res) user.set(res);
     });
     store.get('dSName').then((res: any) => {
       if (res) {
@@ -87,6 +85,18 @@ const App = () => {
     };
   }, [themeValue.get()]);
 
+  const fetchUserData = async () => {
+    try {
+       const res = await store.get('user');
+        // console.log("res res user user", res)
+        if (res) user.set(res);
+    } catch (error) {
+      console.log("Error fetching user data:", error);
+    } finally {
+      // Any cleanup or final actions can be performed here
+      setIsFetching(false)
+    }
+  };
   useEffect(() => {
     store.get('theme').then((res: any) => {
       if (res) {
@@ -108,6 +118,12 @@ const App = () => {
   const pinWiseInitial = pinCode.get() ? 'Pin' : (!user.get()?.email ? 'Login' : 'Draw');
 
   console.log('isConnected?', isConnected, user.get()?.email);
+
+  if (isFetching) {
+    return (
+      <Splash />
+    );
+  }
   return (
     <SafeAreaProvider>
       {/* <SafeAreaView style={{ flex: 1 }}> */}

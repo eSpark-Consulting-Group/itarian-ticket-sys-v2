@@ -4,13 +4,16 @@ set -e
 
 echo "🧹 Cleaning environment..."
 watchman watch-del-all || true
-rm -rf node_modules
-rm -rf android/.cxx android/app/build android/build
-rm -rf ~/.gradle/caches ~/.gradle/daemon
-rm -rf android/app/build/generated
+sudo rm -rf node_modules
+sudo rm -rf android/.cxx android/app/build android/build
+sudo rm -rf ~/.gradle/caches ~/.gradle/daemon
+sudo rm -rf android/app/build/generated
 
 echo "📦 Reinstalling dependencies..."
 yarn install
+
+echo "🩹 Applying patches..."
+npx patch-package
 
 echo "🔧 Installing react-native-codegen..."
 yarn add --dev react-native-codegen
