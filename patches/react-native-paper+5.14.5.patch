@@ -1,3 +1,16 @@
+diff --git a/node_modules/react-native-paper/src/components/Checkbox/CheckboxIOS.tsx b/node_modules/react-native-paper/src/components/Checkbox/CheckboxIOS.tsx
+index e5f2c1a..308b00b 100644
+--- a/node_modules/react-native-paper/src/components/Checkbox/CheckboxIOS.tsx
++++ b/node_modules/react-native-paper/src/components/Checkbox/CheckboxIOS.tsx
+@@ -72,7 +72,7 @@ const CheckboxIOS = ({
+       accessibilityRole="checkbox"
+       accessibilityState={{ disabled, checked }}
+       accessibilityLiveRegion="polite"
+-      style={styles.container}
++      style={[styles.container, { borderRadius: 4, borderWidth: 2, padding: 0, borderColor: rest.color}]}
+       testID={testID}
+       theme={theme}
+     >
 diff --git a/node_modules/react-native-paper/src/components/FAB/FABGroup.tsx b/node_modules/react-native-paper/src/components/FAB/FABGroup.tsx
 index ca263e3..dbc7320 100644
 --- a/node_modules/react-native-paper/src/components/FAB/FABGroup.tsx

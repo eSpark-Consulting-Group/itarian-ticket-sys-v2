@@ -83,7 +83,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 
   // Calculate top inset for Android notch
   const topInset =
-    Platform.OS === 'android' && (initialWindowMetrics?.insets.top || 0) > 24
+    Platform.OS === 'android'
       ? initialWindowMetrics?.insets.top
       : 0;
 
@@ -94,7 +94,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
       style={{
         ...styles.container,
         backgroundColor: colors.primary,
-        paddingTop: topInset,
+        paddingTop: topInset ? topInset / 2 : 0,
       }}>
       <TouchableOpacity
         style={styles.header}
