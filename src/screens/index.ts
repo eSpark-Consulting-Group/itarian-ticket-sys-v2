@@ -17,6 +17,7 @@ import Locations from './Locations';
 import HelpTopics from './HelpTopic';
 import CannedResponse from './CannedResponse';
 import Groups from './Groups';
+import ToolsScreen from './tools';
 
 export {
   Login,
@@ -39,4 +40,5 @@ export {
   HelpTopics,
   CannedResponse,
   Groups,
+  ToolsScreen,
 };

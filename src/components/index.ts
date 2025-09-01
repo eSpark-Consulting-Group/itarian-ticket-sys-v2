@@ -31,8 +31,11 @@ import AppStatusBar from './AppStatusBar';
 import CstmColorPicker from './CstmColorPicker';
 import NoInternetModal from './NoInternetModal';
 import DividerComponent from './DividerComponent';
-export { default as PreviewImage } from './PreviewImage'
-export { default as ImageUploadOptions } from './ImageUploadOptions'
+import V3Header from './V3Header';
+import CustomSwitch from './CustomSwitch';
+import ToolList from './ToolList';
+export { default as PreviewImage } from './PreviewImage';
+export { default as ImageUploadOptions } from './ImageUploadOptions';
 export {
   CstmButton,
   CstmInput,
@@ -67,5 +70,8 @@ export {
   AppStatusBar,
   CstmColorPicker,
   NoInternetModal,
-  DividerComponent
+  DividerComponent,
+  V3Header,
+  CustomSwitch,
+  ToolList,
 };
