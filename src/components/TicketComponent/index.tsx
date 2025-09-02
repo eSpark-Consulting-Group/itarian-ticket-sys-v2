@@ -1,109 +1,259 @@
 import React from 'react';
-import { View, Text, Platform } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Theme, useTheme } from '@react-navigation/native';
-import II from 'react-native-vector-icons/Ionicons';
 import moment from 'moment';
-
 import { CstmPressable } from '../CstmPressable';
-import { SCREEN_WIDTH } from '../../constants';
-import styles from './styles';
+import FA from 'react-native-vector-icons/Feather';
+import { Checkbox, Text } from 'react-native-paper';
 
-const TicketComponent = ({
-  item2,
-  ind,
-  onPress = e => {},
-}: {
+const formatDate = (value?: string) =>
+  value ? moment(value).format('YYYY-MM-DD HH:mm:ss') : 'N/A';
+
+interface TicketComponentProps {
   item2: any;
   ind: number;
-  onPress: (e: any) => void;
+  onPress?: (e: any) => void;
+  selectionMode?: boolean;
+  isSelected?: boolean;
+  onSelect?: () => void;
+}
+
+const TicketComponent: React.FC<TicketComponentProps> = ({
+  item2,
+  ind,
+  onPress = () => {},
+  selectionMode = false,
+  isSelected = false,
+  onSelect = () => {},
 }) => {
-  const checkDueDate = (value: Date): boolean => moment(value).isBefore();
-  const { dark, colors }: Theme = useTheme();
+  const { colors, dark } = useTheme();
+  const attributes = item2?.attributes ?? {};
+  const ticketId = item2?.id ?? 'N/A';
+  const isClosed = attributes?.ticketstatus?.name?.toLowerCase() === 'closed';
 
   return (
     <CstmPressable
-      style={{ paddingHorizontal: 12, width: SCREEN_WIDTH }}
-      key={`${item2?.id}-${ind}`}
-      onPress={() => {
-        onPress(item2);
-      }}
-      android_ripple={{ color: dark ? '#ffffff0e' : '#0000000e' }}>
-      <View style={styles.itemContentContainer}>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={styles.itemContentIconContainer}>
-            <View
-              style={{
-                ...styles.itemContentIcon,
-                backgroundColor: '#28648f',
-              }}>
-              <II name="pricetag" size={22} color="#fff" />
-            </View>
-          </View>
-          <View>
-            <Text
-              style={{ fontWeight: 'bold', color: colors.text, fontSize: 22 }}>
-              Ticket #{item2?.id}
-            </Text>
-            <Text
-              numberOfLines={1}
-              style={{
-                fontWeight: '500',
-                color: colors.text,
-                fontSize: 16,
-                width: SCREEN_WIDTH * 0.5,
-              }}>
-              Subject: {item2?.attributes?.subject}
-            </Text>
-            <Text
-              style={{
-                color: colors.primary,
-                fontSize: 12,
-                fontWeight: '400',
-              }}>
-              Status: {item2?.attributes?.ticketstatus?.name}
-            </Text>
-            <View style={styles.descContentContainer}>
-              {item2?.attributes?.company && (
-                <View style={styles.rowContainer}>
-                  <II
-                    name="business"
-                    color={colors.text}
-                    style={styles.margin_5}
-                  />
-                  <Text style={{ color: colors.text }}>
-                    {item2?.attributes?.company?.name?.toString()}
-                  </Text>
-                </View>
-              )}
-            </View>
-          </View>
+      onPress={() => onPress(item2)}
+      style={[
+        styles.container,
+        { backgroundColor: dark ? colors.card : '#fafafa' },
+      ]}
+      key={`${ticketId}-${ind}`}
+    >
+      {/* Checkbox Row */}
+      {selectionMode && (
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginBottom: 6,
+          }}
+        >
+          <Checkbox
+            status={isSelected ? 'checked' : 'unchecked'}
+            onPress={onSelect}
+            color={colors.primary}
+          />
         </View>
-        <View>
-          {checkDueDate(item2?.attributes?.duedate) && (
-            <View
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              <View
-                style={{
-                  backgroundColor: '#dc3545',
-                  padding: 1,
-                  paddingHorizontal: 4,
-                  borderRadius: 3,
-                  opacity: 0.65,
-                }}>
-                <Text
-                  style={{ color: '#ffffff', fontFamily: Platform.OS === 'android' ? 'sans-serif-medium' : 'OpenSans-Medium' }}>
-                  Overdue
-                </Text>
-              </View>
-            </View>
-          )}
+      )}
+
+      {/* Header */}
+      <View style={styles.headerRow}>
+        <View style={styles.statusContainer}>
+          <FA name="clock" size={14} />
+          <Text style={styles.statusText}>Due today</Text>
         </View>
+      </View>
+
+      {/* Title Row */}
+      <View style={styles.rowBetween}>
+        <Text style={[styles.title, { color: colors.text }]}>
+          {attributes?.subject || `Ticket #${ticketId}`}
+        </Text>
+        {isClosed && (
+          <View
+            style={[
+              styles.closedChip,
+              { borderColor: dark ? colors.border : '#D9D9D9' },
+            ]}
+          >
+            <View
+              style={[styles.closedDot, { backgroundColor: colors.primary }]}
+            />
+            <Text style={[styles.closedChipText, { color: colors.primary }]}>
+              Closed
+            </Text>
+          </View>
+        )}
+      </View>
+
+      <View style={styles.metaContainer}>
+        <MetaItem label="Ticket ID" value={`#${ticketId}`} />
+        <MetaItem
+          label="From"
+          value={attributes?.user?.user_name}
+          chip
+          chipColor={dark ? colors.border : '#D9D9D9'}
+        />
+        <MetaItem
+          label="Assigned to"
+          value={attributes?.assigned_staff?.user_name}
+          chip
+          chipColor={dark ? colors.border : '#D9D9D9'}
+        />
+        <MetaItem label="Priority" value={attributes?.priority || 'Low'} />
+        <MetaItem
+          label="Last Activity"
+          value={formatDate(attributes?.lastactivity)}
+        />
+        <MetaItem
+          label="Created at"
+          value={formatDate(attributes?.created_at)}
+        />
       </View>
     </CstmPressable>
   );
 };
+
+interface MetaItemProps {
+  label: string;
+  value?: string;
+  chip?: boolean;
+  chipColor?: string;
+}
+
+const MetaItem: React.FC<MetaItemProps> = ({
+  label,
+  value,
+  chip = false,
+  chipColor = '#D9D9D9',
+}) => {
+  const theme: Theme = useTheme();
+
+  return (
+    <View style={styles.metaRow}>
+      <Text
+        style={[
+          styles.metaLabel,
+          { color: theme.dark ? theme.colors.text : '#8d8d8dff' },
+        ]}
+      >
+        {label}
+      </Text>
+
+      {chip ? (
+        <View style={[styles.chip, { borderColor: chipColor }]}>
+          <Text
+            style={[
+              styles.link,
+              { color: theme.dark ? theme.colors.text : theme.colors.primary },
+            ]}
+          >
+            {value || 'N/A'}
+          </Text>
+        </View>
+      ) : (
+        <Text
+          style={[
+            styles.metaValue,
+            { color: theme.dark ? theme.colors.text : '#000' },
+          ]}
+        >
+          {value || 'N/A'}
+        </Text>
+      )}
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    borderRadius: 16,
+    padding: 16,
+    marginBottom: 12,
+  },
+  headerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
+  statusContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    // paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 8,
+  },
+  statusText: {
+    fontSize: 14,
+    fontWeight: '500',
+  },
+  closedChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 6,
+    borderWidth: 1,
+    justifyContent: 'center',
+  },
+  closedDot: {
+    width: 5,
+    aspectRatio: 1,
+    borderRadius: 5,
+    marginRight: 4,
+  },
+  closedChipText: {
+    fontSize: 12,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 4,
+  },
+
+  metaContainer: {
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: '#E5E7EB',
+    marginTop: 8,
+  },
+  metaRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 8,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#E5E7EB',
+  },
+  metaLabel: {
+    fontSize: 14,
+    // color: '#4B5563',
+    width: 120,
+  },
+  metaValue: {
+    fontSize: 14,
+    color: '#111827',
+    flex: 1,
+    textAlign: 'left',
+  },
+  chip: {
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 6,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  link: {
+    color: '#3B82F6',
+    fontSize: 14,
+  },
+  rowBetween: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+});
 
 export default TicketComponent;

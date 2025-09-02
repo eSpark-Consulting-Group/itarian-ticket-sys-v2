@@ -151,7 +151,8 @@ project.ext.vectoricons = [
         'MaterialCommunityIcons.ttf',
         'Octicons.ttf',
         'SimpleLineIcons.ttf',
-        'Zocial.ttf'
+        'Zocial.ttf',
+        
     ]
 ]
 

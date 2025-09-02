@@ -8,11 +8,17 @@ import II from 'react-native-vector-icons/Ionicons';
 import Agenda from '../../screens/Agenda';
 import Contacts from '../../screens/Contacts';
 import Settings from '../../screens/Settings';
-import { TicketStatus, ToolsScreen } from '../../screens';
+import {
+  Search,
+  TicketsScreen,
+  TicketStatus,
+  ToolsScreen,
+} from '../../screens';
 import Dashboard from '../../screens/Dashboard';
 import { Text } from 'react-native-paper';
 import { Touchable, TouchableOpacity } from 'react-native';
 import { Theme, useTheme } from '@react-navigation/native';
+import { V3Header } from '../../components';
 
 const Tab = createBottomTabNavigator();
 
@@ -50,48 +56,89 @@ const BottomTabs = () => {
       <Tab.Screen
         name="Tools"
         component={ToolsScreen}
-        options={({ route, navigation }) => ({
+        options={({ navigation }) => ({
           headerShown: true,
-
-          title: 'Tools',
-          headerTitleAlign: 'left',
-          headerStyle: {
-            backgroundColor: dark ? colors.card : '#F9F9F9',
-          },
-          headerTitleStyle: {
-            color: dark ? '#fff' : '#000',
-            fontFamily: 'Helvetica Neue',
-          },
-
-          headerRight: () => {
-            return (
-              <TouchableOpacity
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  paddingRight: '2%',
-                }}
-                onPress={() =>
+          header: () => (
+            <V3Header
+              title="Tools"
+              showBack={false} // or true if you want back arrow
+              rightText={{
+                label: 'New Response',
+                onPress: () =>
                   navigation.navigate('Stack3', {
                     screen: 'NewResponse',
-                  })
-                }
-              >
-                <II size={24} name="add" color={dark ? '#fff' : '#1185E6'} />
-                <Text
-                  style={{ color: dark ? '#fff' : '#1185E6', fontSize: 16 }}
-                >
-                  New Response
-                </Text>
-              </TouchableOpacity>
-            );
-          },
+                  }),
+              }}
+            />
+          ),
         })}
       />
       {/* <Tab.Screen name="Settings" component={Settings} /> */}
-      <Tab.Screen name="Users" component={Contacts} />
-      <Tab.Screen name="Home" component={Dashboard} />
-      <Tab.Screen name="Tickets" component={Agenda} />
+      <Tab.Screen
+        name="Users"
+        component={Contacts}
+        options={({ navigation }) => ({
+          headerShown: true,
+          header: () => (
+            <V3Header
+              title="Users"
+              showBack={false} // or true if you want back arrow
+              rightText={{
+                label: 'New User',
+                onPress: () =>
+                  navigation.navigate('Stack3', {
+                    screen: 'NewResponse',
+                  }),
+              }}
+            />
+          ),
+        })}
+      />
+      <Tab.Screen
+        name="Home"
+        component={Dashboard}
+        options={({ navigation }) => ({
+          headerShown: true,
+          header: () => (
+            <V3Header
+              title="Dashboard"
+              rightIcons={[
+                {
+                  name: 'notifications-outline',
+                  onPress: () => console.log('Notif tapped'),
+                },
+                {
+                  name: 'settings-outline',
+                  onPress: () =>
+                    navigation.navigate('Stack3', { screen: 'Settings' }),
+                },
+              ]}
+            />
+          ),
+        })}
+      />
+
+      <Tab.Screen
+        name="Tickets"
+        component={TicketsScreen}
+        options={({ navigation }) => ({
+          headerShown: true,
+          header: () => (
+            <V3Header
+              title="Tickets"
+              showBack={false} // or true if you want back arrow
+              rightText={{
+                label: 'New Ticket',
+                onPress: () =>
+                  navigation.navigate('Stack3', {
+                    screen: 'NewResponse',
+                  }),
+              }}
+            />
+          ),
+        })}
+      />
+
       <Tab.Screen name="Report" component={TicketStatus} />
     </Tab.Navigator>
   );

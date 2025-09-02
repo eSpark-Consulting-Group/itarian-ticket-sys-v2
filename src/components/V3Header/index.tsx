@@ -1,3 +1,4 @@
+import { Theme, useTheme } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -17,19 +18,35 @@ const V3Header: React.FC<HeaderProps> = ({
   rightIcons,
   rightText,
 }) => {
+  const theme: Theme = useTheme();
+  const isDark = theme.dark;
+
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: isDark ? theme.colors.card : '#F2F2F2' },
+      ]}
+    >
       {/* Left Section */}
-      <View style={styles.left}>
-        {showBack && (
+      {showBack && (
+        <View style={styles.left}>
           <TouchableOpacity onPress={onBackPress}>
-            <Icon name="chevron-back" size={24} color="#000" />
+            <Icon
+              name="chevron-back"
+              size={24}
+              color={isDark ? theme.colors.text : '#000'}
+            />
           </TouchableOpacity>
-        )}
-      </View>
+        </View>
+      )}
 
       {/* Title */}
-      <Text style={styles.title}>{title}</Text>
+      <Text
+        style={[styles.title, { color: isDark ? theme.colors.text : '#000' }]}
+      >
+        {title}
+      </Text>
 
       {/* Right Section */}
       <View style={styles.right}>
@@ -40,12 +57,27 @@ const V3Header: React.FC<HeaderProps> = ({
               onPress={icon.onPress}
               style={styles.iconBtn}
             >
-              <Icon name={icon.name} size={22} color="#000" />
+              <Icon
+                name={icon.name}
+                size={22}
+                color={isDark ? theme.colors.text : '#000'}
+              />
             </TouchableOpacity>
           ))}
+
         {rightText && (
-          <TouchableOpacity onPress={rightText.onPress}>
-            <Text style={styles.rightText}>{rightText.label}</Text>
+          <TouchableOpacity
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              paddingRight: '2%',
+            }}
+            onPress={rightText.onPress}
+          >
+            <Icon size={24} name="add" color={isDark ? '#fff' : '#1185E6'} />
+            <Text style={{ color: isDark ? '#fff' : '#1185E6', fontSize: 16 }}>
+              {rightText.label}
+            </Text>
           </TouchableOpacity>
         )}
       </View>
@@ -60,7 +92,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 12,
-    backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
   },
@@ -80,14 +111,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#000',
     flex: 1,
-    textAlign: 'center',
   },
   rightText: {
     fontSize: 16,
     fontWeight: '500',
-    color: '#007AFF',
     marginLeft: 12,
   },
 });

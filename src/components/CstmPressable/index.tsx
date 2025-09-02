@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 // import { Theme, useTheme } from '@react-navigation/native';
 
-export function CstmPressable ({
+export function CstmPressable({
   android_disableSound = false,
   children,
   onPress = () => {},
@@ -21,7 +21,7 @@ export function CstmPressable ({
   android_disableSound?: boolean;
   children?: React.ReactNode;
   onPress?: () => void;
-  style?: ViewStyle;
+  style?: ViewStyle | ViewStyle[];
   disabled?: boolean;
   android_ripple?: null | PressableAndroidRippleConfig;
   otherProps?: PressableProps;
@@ -32,7 +32,7 @@ export function CstmPressable ({
   return disabled ? (
     <View>
       {/* <TouchableWithoutFeedback> */}
-        <View style={{ ...style }}>{children}</View>
+      <View style={{ ...style }}>{children}</View>
       {/* </TouchableWithoutFeedback> */}
     </View>
   ) : (
@@ -45,9 +45,9 @@ export function CstmPressable ({
         // color: rippleColor,
         ...android_ripple,
       }}
-      {...otherProps}>
+      {...otherProps}
+    >
       {children}
     </Pressable>
   );
-};
-
+}
