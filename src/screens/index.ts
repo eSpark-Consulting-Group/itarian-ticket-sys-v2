@@ -18,6 +18,7 @@ import HelpTopics from './HelpTopic';
 import CannedResponse from './CannedResponse';
 import Groups from './Groups';
 import ToolsScreen from './tools';
+import TicketsScreen from './Tickets';
 
 export {
   Login,
@@ -41,4 +42,5 @@ export {
   CannedResponse,
   Groups,
   ToolsScreen,
+  TicketsScreen,
 };

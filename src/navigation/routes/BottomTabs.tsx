@@ -8,7 +8,12 @@ import II from 'react-native-vector-icons/Ionicons';
 import Agenda from '../../screens/Agenda';
 import Contacts from '../../screens/Contacts';
 import Settings from '../../screens/Settings';
-import { TicketStatus, ToolsScreen } from '../../screens';
+import {
+  Search,
+  TicketsScreen,
+  TicketStatus,
+  ToolsScreen,
+} from '../../screens';
 import Dashboard from '../../screens/Dashboard';
 import { Text } from 'react-native-paper';
 import { Touchable, TouchableOpacity } from 'react-native';
@@ -91,7 +96,7 @@ const BottomTabs = () => {
       {/* <Tab.Screen name="Settings" component={Settings} /> */}
       <Tab.Screen name="Users" component={Contacts} />
       <Tab.Screen name="Home" component={Dashboard} />
-      <Tab.Screen name="Tickets" component={Agenda} />
+      <Tab.Screen name="Tickets" component={TicketsScreen} />
       <Tab.Screen name="Report" component={TicketStatus} />
     </Tab.Navigator>
   );
