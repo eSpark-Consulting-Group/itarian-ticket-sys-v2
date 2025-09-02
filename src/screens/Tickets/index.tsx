@@ -58,7 +58,7 @@ const dummyTickets = [
 ];
 
 const TicketsScreen = ({ navigation }: any) => {
-  const { colors } = useTheme();
+  const { colors, dark } = useTheme();
   const [tickets, setTickets] = useState(dummyTickets);
   const [filteredTickets, setFilteredTickets] = useState(dummyTickets);
   const [searchValue, setSearchValue] = useState('');
@@ -141,15 +141,17 @@ const TicketsScreen = ({ navigation }: any) => {
           }}
         >
           <TouchableOpacity onPress={toggleSelectionMode}>
-            <Text>{selectionMode ? 'Cancel' : 'Select'}</Text>
+            <Text style={{ color: dark ? '#fff' : '#000' }}>
+              {selectionMode ? 'Cancel' : 'Select'}
+            </Text>
           </TouchableOpacity>
           {/* might have other options, not sure yet */}
           <TouchableOpacity
             style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
             onPress={toggleSort}
           >
-            <Text>Sort By</Text>
-            <II name="swap-vertical" size={20} />
+            <Text style={{ color: dark ? '#fff' : '#000' }}>Sort By</Text>
+            <II name="swap-vertical" size={20} color={dark ? '#fff' : '#000'} />
           </TouchableOpacity>
         </View>
         {selectionMode && (
@@ -165,7 +167,9 @@ const TicketsScreen = ({ navigation }: any) => {
               onPress={toggleSelectAll}
               color={colors.primary}
             />
-            <Text style={{ marginLeft: 8 }}>Select All</Text>
+            <Text style={{ marginLeft: 8, color: dark ? '#fff' : '#000' }}>
+              Select All
+            </Text>
           </View>
         )}
 
@@ -199,6 +203,7 @@ const TicketsScreen = ({ navigation }: any) => {
               }}
             />
           )}
+          contentContainerStyle={{ paddingBottom: 120 }}
         />
       </View>
     );

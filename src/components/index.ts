@@ -34,6 +34,9 @@ import DividerComponent from './DividerComponent';
 import V3Header from './V3Header';
 import CustomSwitch from './CustomSwitch';
 import ToolList from './ToolList';
+import DashboardCard from './DashboardCard.tsx';
+import DashboardReport from './DashboardReport';
+import DashboardStats from './DashboardStats';
 // import chec
 export { default as PreviewImage } from './PreviewImage';
 export { default as ImageUploadOptions } from './ImageUploadOptions';
@@ -75,4 +78,7 @@ export {
   V3Header,
   CustomSwitch,
   ToolList,
+  DashboardCard,
+  DashboardReport,
+  DashboardStats,
 };

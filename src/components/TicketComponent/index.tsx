@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { useTheme } from '@react-navigation/native';
+import { View, StyleSheet } from 'react-native';
+import { Theme, useTheme } from '@react-navigation/native';
 import moment from 'moment';
 import { CstmPressable } from '../CstmPressable';
 import FA from 'react-native-vector-icons/Feather';
-import { Checkbox } from 'react-native-paper';
+import { Checkbox, Text } from 'react-native-paper';
 
 const formatDate = (value?: string) =>
   value ? moment(value).format('YYYY-MM-DD HH:mm:ss') : 'N/A';
@@ -127,18 +127,44 @@ const MetaItem: React.FC<MetaItemProps> = ({
   value,
   chip = false,
   chipColor = '#D9D9D9',
-}) => (
-  <View style={styles.metaRow}>
-    <Text style={styles.metaLabel}>{label}</Text>
-    {chip ? (
-      <View style={[styles.chip, { borderColor: chipColor }]}>
-        <Text style={styles.link}>{value || 'N/A'}</Text>
-      </View>
-    ) : (
-      <Text style={styles.metaValue}>{value || 'N/A'}</Text>
-    )}
-  </View>
-);
+}) => {
+  const theme: Theme = useTheme();
+
+  return (
+    <View style={styles.metaRow}>
+      <Text
+        style={[
+          styles.metaLabel,
+          { color: theme.dark ? theme.colors.text : '#8d8d8dff' },
+        ]}
+      >
+        {label}
+      </Text>
+
+      {chip ? (
+        <View style={[styles.chip, { borderColor: chipColor }]}>
+          <Text
+            style={[
+              styles.link,
+              { color: theme.dark ? theme.colors.text : theme.colors.primary },
+            ]}
+          >
+            {value || 'N/A'}
+          </Text>
+        </View>
+      ) : (
+        <Text
+          style={[
+            styles.metaValue,
+            { color: theme.dark ? theme.colors.text : '#000' },
+          ]}
+        >
+          {value || 'N/A'}
+        </Text>
+      )}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -187,11 +213,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginBottom: 4,
   },
-  ticketId: {
-    fontSize: 12,
-    color: '#9CA3AF',
-    marginBottom: 12,
-  },
+
   metaContainer: {
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: '#E5E7EB',
@@ -206,7 +228,7 @@ const styles = StyleSheet.create({
   },
   metaLabel: {
     fontSize: 14,
-    color: '#4B5563',
+    // color: '#4B5563',
     width: 120,
   },
   metaValue: {

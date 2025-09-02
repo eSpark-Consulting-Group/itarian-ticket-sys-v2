@@ -235,7 +235,7 @@ const SearchBar = ({
           style={[
             styles.inputStyle,
             {
-              backgroundColor: dark ? '#80808040' : '#dfdfdf',
+              backgroundColor: dark ? '#80808040' : '#f0f0f0ff',
             },
           ]}
           icon={() => (

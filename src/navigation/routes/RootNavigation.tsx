@@ -106,9 +106,9 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <AppStatusBar
-        backgroundColor={LightTheme?.colors.primary}
+        backgroundColor={LightTheme?.colors.card}
         // backgroundColor={dark ? 'pink' : 'black'}
-        barStyle="light-content"
+        barStyle="dark-content"
       />
       <NoInternetModal
         visible={!isConnected}
