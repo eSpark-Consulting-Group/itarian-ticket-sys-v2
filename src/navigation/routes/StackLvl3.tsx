@@ -7,12 +7,14 @@ import MI from 'react-native-vector-icons/MaterialIcons';
 
 import { ServiceTickets as STickets } from '../../forms';
 import { handleStopwatch } from '../utils/headerFunctions';
+import Settings from '../../screens/Settings';
 import Contact1 from '../../screens/Contacts/View/Contacts';
+import NewResponseScreen from '../../screens/NewResponse';
 
 const Stack = createNativeStackNavigator();
 
 const StackLvl2 = ({ navigation, route }: any) => {
-  const { colors }: Theme = useTheme();
+  const { colors, dark }: Theme = useTheme();
 
   return (
     <Stack.Navigator
@@ -22,7 +24,8 @@ const StackLvl2 = ({ navigation, route }: any) => {
           color: '#fff',
         },
         animation: 'slide_from_bottom',
-      }}>
+      }}
+    >
       <Stack.Screen
         name="STickets"
         component={STickets}
@@ -78,6 +81,53 @@ const StackLvl2 = ({ navigation, route }: any) => {
             />
           ),
           headerRight: () => null,
+        })}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={Settings}
+        options={({ route, navigation }) => ({
+          title: 'Settings',
+          headerTitleAlign: 'left',
+          headerStyle: {
+            backgroundColor: dark ? colors.primary : '#F9F9F9',
+          },
+          headerTitleStyle: {
+            color: dark ? '#fff' : '#000',
+          },
+          headerLeft: () => (
+            <II
+              size={30}
+              name="chevron-back"
+              style={{ right: 6 }}
+              color={dark ? '#fff' : '#5F6368'}
+              onPress={() => navigation.goBack()}
+            />
+          ),
+          headerRight: () => null,
+        })}
+      />
+      <Stack.Screen
+        name="NewResponse"
+        component={NewResponseScreen}
+        options={({ route, navigation }) => ({
+          title: 'New Response',
+          headerTitleAlign: 'left',
+          headerStyle: {
+            backgroundColor: dark ? colors.primary : '#F9F9F9',
+          },
+          headerTitleStyle: {
+            color: dark ? '#fff' : '#000',
+          },
+          headerLeft: () => (
+            <II
+              size={30}
+              name="chevron-back"
+              style={{ right: 6 }}
+              color={dark ? '#fff' : '#5F6368'}
+              onPress={() => navigation.goBack()}
+            />
+          ),
         })}
       />
     </Stack.Navigator>

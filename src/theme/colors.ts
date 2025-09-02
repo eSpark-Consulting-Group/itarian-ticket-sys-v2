@@ -14,8 +14,8 @@ export const LightTheme: Theme = {
   //Light Theme
   dark: false,
   colors: {
-    primary: '#28648f',
-    background: '#F5F7F9',
+    primary: '#1185E6',
+    background: '#ffffff',
     card: '#ffffff',
     text: '#000000',
     border: '#28648f',
@@ -28,7 +28,7 @@ export const DarkTheme: Theme = {
   //Dark Theme
   dark: true,
   colors: {
-    primary: '#28648f',
+    primary: '#1185E6',
     background: '#141414',
     border: '#28648f',
     text: '#ffffff',
@@ -36,5 +36,4 @@ export const DarkTheme: Theme = {
     notification: '#28648f',
   },
   fonts: configureFonts({ config: fontConfig }),
-
 };

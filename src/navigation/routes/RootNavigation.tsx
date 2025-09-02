@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, Theme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useHookstate, State } from '@hookstate/core';
@@ -21,6 +21,7 @@ import { MenuProvider } from 'react-native-popup-menu';
 import Splash from '../../screens/Splash/Splash';
 
 import BottomTabs from './BottomTabs';
+import { useTheme } from 'react-native-paper';
 
 export type RootStackParamList = {
   Login: undefined;
@@ -47,6 +48,7 @@ const App = () => {
   );
   const [isFetching, setIsFetching] = useState<boolean>(true);
   const [isConnected, setIsConnected] = useState<any>(true);
+  const { dark, colors }: Theme = useTheme();
 
   useEffect(() => {
     fetchUserData();
@@ -57,10 +59,12 @@ const App = () => {
         dScreen.set(res?.dSId);
       }
     });
-    store.get('dNavName').then((res: any) => res && dNavName.set(res?.dNavName));
-    store.get('bioMetric').then(
-      (res: any) => res && biometricState.set(res?.bioMetric),
-    );
+    store
+      .get('dNavName')
+      .then((res: any) => res && dNavName.set(res?.dNavName));
+    store
+      .get('bioMetric')
+      .then((res: any) => res && biometricState.set(res?.bioMetric));
 
     const unsubscribe = NetInfo.addEventListener(state =>
       setIsConnected(state.isConnected),
@@ -80,9 +84,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    store.get('theme').then(
-      (res: any) => res && themeValue.set(res?.theme),
-    );
+    store.get('theme').then((res: any) => res && themeValue.set(res?.theme));
   }, []);
 
   const handleColdBoot = (data: ShortcutItem) => {
@@ -105,6 +107,7 @@ const App = () => {
     <SafeAreaProvider>
       <AppStatusBar
         backgroundColor={LightTheme?.colors.primary}
+        // backgroundColor={dark ? 'pink' : 'black'}
         barStyle="light-content"
       />
       <NoInternetModal

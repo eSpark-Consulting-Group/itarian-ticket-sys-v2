@@ -10,10 +10,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { LineChart } from 'react-native-chart-kit';
 import { Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const screenWidth = Dimensions.get('window').width;
 
 const Dashboard = () => {
+  const navigation: any = useNavigation();
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -25,11 +28,21 @@ const Dashboard = () => {
             color="#000"
             style={{ marginRight: 15 }}
           />
-          <Icon name="settings-outline" size={22} color="#000" />
+          <Icon
+            name="settings-outline"
+            size={22}
+            color="#000"
+            onPress={() =>
+              navigation.navigate('Stack3', { screen: 'Settings' })
+            }
+          />
         </View>
       </View>
 
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={styles.cardRow}>
           <View style={styles.card}>
             <View style={styles.rowItem}>
@@ -141,8 +154,8 @@ const Dashboard = () => {
 export default Dashboard;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F2F2F2'},
-  scrollView: { backgroundColor: '#fff', padding: 15  },
+  container: { flex: 1, backgroundColor: '#F2F2F2' },
+  scrollView: { backgroundColor: '#fff', padding: 15 },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
