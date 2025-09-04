@@ -25,12 +25,15 @@ export interface MyTextProps extends TextProps {
 }
 
 const MyText: React.FC<MyTextProps> = ({ font = 'Poppins-Regular', style, children, ...props }) => {
-    const { colors, dark }: Theme = useTheme();
+  const { colors, dark }: Theme = useTheme();
   return (
     <Text
       {...props}
       style={[
-        { fontFamily: font, color: colors.text },
+        { 
+          fontFamily: font, 
+          color: colors.text 
+        },
         style,
       ]}
     >

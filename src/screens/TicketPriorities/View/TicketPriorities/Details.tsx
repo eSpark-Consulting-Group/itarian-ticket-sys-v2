@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, FlatList, KeyboardTypeOptions, Alert, Text } from 'react-native';
+import { View, FlatList, KeyboardTypeOptions, Alert } from 'react-native';
 import {
   useTheme,
   Theme,

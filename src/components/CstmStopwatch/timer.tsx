@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import MyText from '../MyText/MyText';
 import { Style } from './types';
 import { formatTimeString } from './utils';
 
@@ -116,7 +117,7 @@ class Timer extends Component<TimerProps, TimerStates> {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>{this.formatTime()}</Text>
+  <MyText style={styles.text}>{this.formatTime()}</MyText>
       </View>
     );
   }

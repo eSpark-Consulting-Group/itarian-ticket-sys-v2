@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
-  Text,
   TouchableOpacity,
   FlatList,
   Switch,
@@ -9,6 +8,7 @@ import {
 } from 'react-native';
 import { useTheme, Theme } from '@react-navigation/native';
 import { CustomSwitch, ToolList } from '../../components';
+import MyText from '../../components/MyText/MyText';
 
 const ToolsScreen = () => {
   const { colors, dark }: Theme = useTheme();
@@ -26,9 +26,9 @@ const ToolsScreen = () => {
         onChange={setActiveTab}
       />
 
-      <Text style={{ marginTop: 20, fontSize: 18, fontWeight: 'semibold' }}>
+      <MyText style={{ marginTop: 20, fontSize: 18, fontWeight: 'semibold' }}>
         Statistics
-      </Text>
+      </MyText>
 
       <ToolList />
     </View>

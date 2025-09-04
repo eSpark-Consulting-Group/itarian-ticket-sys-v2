@@ -4,7 +4,8 @@ import { Theme, useTheme } from '@react-navigation/native';
 import moment from 'moment';
 import { CstmPressable } from '../CstmPressable';
 import FA from 'react-native-vector-icons/Feather';
-import { Checkbox, Text } from 'react-native-paper';
+import { Checkbox } from 'react-native-paper';
+import MyText from '../MyText/MyText';
 
 const formatDate = (value?: string) =>
   value ? moment(value).format('YYYY-MM-DD HH:mm:ss') : 'N/A';
@@ -61,15 +62,15 @@ const TicketComponent: React.FC<TicketComponentProps> = ({
       <View style={styles.headerRow}>
         <View style={styles.statusContainer}>
           <FA name="clock" size={14} />
-          <Text style={styles.statusText}>Due today</Text>
+          <MyText style={styles.statusText}>Due today</MyText>
         </View>
       </View>
 
       {/* Title Row */}
       <View style={styles.rowBetween}>
-        <Text style={[styles.title, { color: colors.text }]}>
+        <MyText style={[styles.title, { color: colors.text }]}>
           {attributes?.subject || `Ticket #${ticketId}`}
-        </Text>
+        </MyText>
         {isClosed && (
           <View
             style={[
@@ -80,9 +81,9 @@ const TicketComponent: React.FC<TicketComponentProps> = ({
             <View
               style={[styles.closedDot, { backgroundColor: colors.primary }]}
             />
-            <Text style={[styles.closedChipText, { color: colors.primary }]}>
+            <MyText style={[styles.closedChipText, { color: colors.primary }]}>
               Closed
-            </Text>
+            </MyText>
           </View>
         )}
       </View>
@@ -132,35 +133,35 @@ const MetaItem: React.FC<MetaItemProps> = ({
 
   return (
     <View style={styles.metaRow}>
-      <Text
+      <MyText
         style={[
           styles.metaLabel,
           { color: theme.dark ? theme.colors.text : '#8d8d8dff' },
         ]}
       >
         {label}
-      </Text>
+      </MyText>
 
       {chip ? (
         <View style={[styles.chip, { borderColor: chipColor }]}>
-          <Text
+          <MyText
             style={[
               styles.link,
               { color: theme.dark ? theme.colors.text : theme.colors.primary },
             ]}
           >
             {value || 'N/A'}
-          </Text>
+          </MyText>
         </View>
       ) : (
-        <Text
+        <MyText
           style={[
             styles.metaValue,
             { color: theme.dark ? theme.colors.text : '#000' },
           ]}
         >
           {value || 'N/A'}
-        </Text>
+        </MyText>
       )}
     </View>
   );

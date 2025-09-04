@@ -30,7 +30,8 @@ import Images from '../../../assets/Images';
 import { userStore } from '../../../stores/userStore';
 import { handleLoginUser } from '../utils/functions';
 import { globalState } from '../../../stores/globalAppState';
-import MyText from '../../../components/MyText/MyText';
+import { LightTheme } from '../../../theme/colors';
+// import MyText from '../../../components/MyText/MyText';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email format').required().label('Email'),
@@ -42,7 +43,8 @@ const LoginScreen = ({ navigation }: NativeStackHeaderProps) => {
   const biometricState: State<boolean> = useHookstate(globalState.useBiometric);
   const [rememberMe, setRememberMe] = useState(false);
   const [keyboardStatus, setKeyboardStatus] = useState(false);
-  const { colors }: Theme = useTheme();
+  // const { colors }: Theme = useTheme();
+  const colors = LightTheme.colors;
 
   useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -165,7 +167,7 @@ const LoginScreen = ({ navigation }: NativeStackHeaderProps) => {
                   ) : (
                     <View />
                   )}
-                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                     <View style={{ flex: 0.1 }} />
                     <Checkbox
                       color={colors.primary}
@@ -173,7 +175,7 @@ const LoginScreen = ({ navigation }: NativeStackHeaderProps) => {
                       status={rememberMe ? 'checked' : 'unchecked'}
                       onPress={() => setRememberMe(!rememberMe)}
                     />
-                    <MyText style={{ color: colors.text }}>Remember Me</MyText>
+                    <Text style={{ color: colors.text }}>Remember Me</Text>
                     <View style={{ flex: 0.1 }} />
                   </View>
                   <View style={{ marginVertical: 10 }}>

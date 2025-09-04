@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, ScrollView, KeyboardTypeOptions, Text } from 'react-native';
+import { View, ScrollView, KeyboardTypeOptions } from 'react-native';
 import { Theme, useTheme } from '@react-navigation/native';
 import { State, useHookstate } from '@hookstate/core';
 
@@ -9,6 +9,7 @@ import { SelectItems } from '../../utils/helperFunctions';
 import { userStore } from '../../stores/userStore';
 import { PosList } from '../../constants/SelectionList';
 import { globalState } from '../../stores/globalAppState';
+import MyText from '../../components/MyText/MyText';
 
 interface StatusProps {
   attributes: StatusAttributes;
@@ -205,7 +206,7 @@ const NewTicketStatus = ({ route, navigation }: any) => {
       obj[route?.params?.item].selectedItem = route?.params?.selected;
       obj[route?.params?.item].leftChild = (
         <View>
-          <Text
+          <MyText
             style={{
               fontFamily: 'FontAwesome',
               color: colors.text,
@@ -220,7 +221,7 @@ const NewTicketStatus = ({ route, navigation }: any) => {
                 16,
               ),
             )}
-          </Text>
+          </MyText>
         </View>
       );
       setDataSource([...obj]);

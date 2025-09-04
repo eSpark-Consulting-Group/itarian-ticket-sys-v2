@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import {
   StyleSheet,
-  Text,
   View,
   Modal,
   TextInput,
@@ -14,6 +13,7 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 
 import { CstmPressable } from '../CstmPressable';
 import GapView from '../GapView';
+import MyText from '../MyText/MyText';
 
 export default function CstmColorPicker({
   visible,
@@ -89,7 +89,7 @@ export default function CstmColorPicker({
                 color={'#fff'}
                 onPress={onClose}
               />
-              <Text
+              <MyText
                 style={{
                   flex: 1,
                   fontSize: 22,
@@ -98,7 +98,7 @@ export default function CstmColorPicker({
                   textAlign: 'center',
                 }}>
                 Pick Color
-              </Text>
+              </MyText>
               <View
                 style={{
                   flex: 0.2,
@@ -130,7 +130,7 @@ export default function CstmColorPicker({
                   justifyContent: 'center',
                 }}>
                 {showError.current && (
-                  <Text style={{ color: 'red' }}>Not a Valid Hex Color</Text>
+                  <MyText style={{ color: 'red' }}>Not a Valid Hex Color</MyText>
                 )}
                 <MyInput
                   colorValue={colorVal}

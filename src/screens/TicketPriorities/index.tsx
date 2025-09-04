@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, RefreshControl } from 'react-native';
+import { View, FlatList, RefreshControl } from 'react-native';
 import {
   NavigationProp,
   Theme,
@@ -141,12 +141,12 @@ export const RenderTickets = ({
           android_ripple={{ color: dark ? '#ffffff0e' : '#0000000e' }}>
           <View style={styles.listItemContainer}>
             <View>
-              <Text
+              <MyText
                 style={{
                   color: colors.text,
                 }}>
                 {item?.attributes?.name}
-              </Text>
+              </MyText>
             </View>
           </View>
         </CstmPressable>

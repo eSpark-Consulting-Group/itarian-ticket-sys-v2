@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, RefreshControl } from 'react-native';
+import { View, FlatList, RefreshControl } from 'react-native';
+import MyText from '../../components/MyText/MyText';
 import { Theme, useNavigation, useTheme } from '@react-navigation/native';
 import { moderateScale } from 'react-native-size-matters';
 import { Divider } from 'react-native-paper';
@@ -111,12 +112,12 @@ export const RenderCompanies = ({
           }
           android_ripple={{ color: dark ? '#ffffff0e' : '#0000000e' }}>
           <View style={{ padding: moderateScale(15) }}>
-            <Text
+            <MyText
               style={{
                 color: colors.text,
               }}>
               {item?.name}
-            </Text>
+            </MyText>
           </View>
         </CstmPressable>
         {index !== listData.length - 1 && (

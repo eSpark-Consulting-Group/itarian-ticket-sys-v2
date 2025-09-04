@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Modal } from 'react-native';
+import { StyleSheet, View, Modal, Text } from 'react-native';
 import { Theme, useTheme } from '@react-navigation/native';
 import II from 'react-native-vector-icons/Ionicons';
 import MI from 'react-native-vector-icons/MaterialIcons';

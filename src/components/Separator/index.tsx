@@ -1,9 +1,10 @@
 import { Theme, useTheme } from '@react-navigation/native';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { Divider } from 'react-native-paper';
 
 import styles from './style';
+import MyText from '../MyText/MyText';
 
 const Separator = ({
   text,
@@ -26,9 +27,9 @@ const Separator = ({
           width: length,
         }}
       />
-      <Text style={{ ...styles.centerContent, color: colors.text }}>
+      <MyText style={{ ...styles.centerContent, color: colors.text }}>
         {text}
-      </Text>
+      </MyText>
       <Divider
         style={{
           ...styles.divider,

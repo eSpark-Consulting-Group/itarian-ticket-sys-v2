@@ -15,7 +15,6 @@ import {
   ToolsScreen,
 } from '../../screens';
 import Dashboard from '../../screens/Dashboard';
-import { Text } from 'react-native-paper';
 import { Touchable, TouchableOpacity } from 'react-native';
 import { Theme, useTheme } from '@react-navigation/native';
 import { V3Header } from '../../components';

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { View, TouchableOpacity, FlatList } from 'react-native';
 import { Theme, useTheme } from '@react-navigation/native';
 import MI from 'react-native-vector-icons/MaterialIcons';
 
 import styles from './styles';
 import { useUpdateEffect } from '../../utils/hooks';
+import MyText from '../MyText/MyText';
 
 const CstmDropDown = ({
   dataSource,
@@ -45,9 +46,9 @@ const CstmDropDown = ({
             backgroundColor: colors.background,
             ...styles.itemContainer,
           }}>
-          <Text style={{ color: colors.text, ...styles.itemText }}>
+          <MyText style={{ color: colors.text, ...styles.itemText }}>
             {item.name}
-          </Text>
+          </MyText>
         </View>
       </TouchableOpacity>
     );
@@ -55,13 +56,13 @@ const CstmDropDown = ({
 
   return (
     <View>
-      <Text
+      <MyText
         style={{
           color: colors.text,
           ...styles.labelText,
         }}>
         {title}
-      </Text>
+      </MyText>
       <TouchableOpacity onPress={() => handleToggle?.(type)}>
         <View
           style={{
@@ -69,9 +70,9 @@ const CstmDropDown = ({
             ...styles.dropdownLabelContainer,
           }}>
           <View style={styles.dropdownLabelInner}>
-            <Text style={{ color: colors.text, ...styles.dropDownText }}>
+            <MyText style={{ color: colors.text, ...styles.dropDownText }}>
               {label.name == '' ? 'Select an Item...' : label.name}
-            </Text>
+            </MyText>
             {toggleValue ? (
               <MI name="arrow-drop-up" color={colors.text} size={22} />
             ) : (

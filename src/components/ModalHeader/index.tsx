@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import MyText from '../MyText/MyText';
 import { useTheme, Theme } from '@react-navigation/native';
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -62,7 +63,7 @@ const ModalHeader = ({
                 )}
             <GapView mode="horizontal" length={5} />
             {!icon && <GapView mode="horizontal" length={14} />}
-            <Text style={{ ...styles.title, color: colors.text }}>{title}</Text>
+            <MyText style={{ ...styles.title, color: colors.text }}>{title}</MyText>
           </View>
           <View style={{ flexDirection: 'row' }}>
             {subIcon && (
@@ -76,9 +77,9 @@ const ModalHeader = ({
             {icon && <GapView mode="horizontal" length={18} />}
             <GapView mode="horizontal" length={5} />
             {subTitle && (
-              <Text style={{ ...styles.subTitle, color: colors.text }}>
+              <MyText style={{ ...styles.subTitle, color: colors.text }}>
                 {subTitle}
-              </Text>
+              </MyText>
             )}
           </View>
         </View>

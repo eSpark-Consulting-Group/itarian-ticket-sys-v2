@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
+import MyText from '../MyText/MyText';
 import { Theme, useTheme } from '@react-navigation/native';
 import { Divider, Menu } from 'react-native-paper';
 import { moderateScale } from 'react-native-size-matters';
@@ -84,9 +85,9 @@ const MenuItem = ({
       <View style={styles.menuItemButtonStyle}>
         <View style={{ flexDirection: 'row' }}>
           {leftIcon}
-          <Text style={{ color: textColor, marginHorizontal: 5 }}>
+          <MyText style={{ color: textColor, marginHorizontal: 5 }}>
             {itemName}
-          </Text>
+          </MyText>
         </View>
         <View style={styles.menuIconContainer}>
           {checkVisible && rightIcon}

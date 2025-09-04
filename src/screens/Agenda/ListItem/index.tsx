@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
+import MyText from '../../../components/MyText/MyText';
 import { Theme, useNavigation, useTheme } from '@react-navigation/native';
 import II from 'react-native-vector-icons/Ionicons';
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -56,18 +57,18 @@ const ListItem = ({
           </View>
           <View style={{ width: '75%' }}>
             {item2?.assigned_to && isResource && (
-              <Text style={{ fontWeight: 'bold', color: colors.text }}>
+              <MyText style={{ fontWeight: 'bold', color: colors.text }}>
                 Assigned to: {item2.assigned_to}
-              </Text>
+              </MyText>
             )}
             {item2.type == 'Ticket' && (
-              <Text style={{ fontWeight: 'bold', color: colors.text }}>
+              <MyText style={{ fontWeight: 'bold', color: colors.text }}>
                 Ticket {item2.ticket_no}
-              </Text>
+              </MyText>
             )}
-            <Text style={{ fontWeight: 'bold', color: colors.text }}>
+            <MyText style={{ fontWeight: 'bold', color: colors.text }}>
               {item2.summary}
-            </Text>
+            </MyText>
             <View style={styles.descContentContainer}>
               {item2.expType && (
                 <View
@@ -76,8 +77,8 @@ const ListItem = ({
                     justifyContent: 'space-between',
                     width: '110%',
                   }}>
-                  <Text style={{ color: colors.text }}>{item2.expType}</Text>
-                  <Text style={{ ...styles.schedule_dur }}>{item2.totExp}</Text>
+                  <MyText style={{ color: colors.text }}>{item2.expType}</MyText>
+                  <MyText style={{ ...styles.schedule_dur }}>{item2.totExp}</MyText>
                 </View>
               )}
               {item2.time_dur && (
@@ -87,12 +88,12 @@ const ListItem = ({
                     color={colors.text}
                     style={styles.margin_5}
                   />
-                  <Text style={{ ...styles.margin_5, color: colors.text }}>
+                  <MyText style={{ ...styles.margin_5, color: colors.text }}>
                     {item2.start_time + '-' + item2.end_time}
-                  </Text>
-                  <Text style={{ ...styles.schedule_dur, color: '#fff' }}>
+                  </MyText>
+                  <MyText style={{ ...styles.schedule_dur, color: '#fff' }}>
                     {item2.time_dur}
-                  </Text>
+                  </MyText>
                 </View>
               )}
               {item2.company_name && (
@@ -102,9 +103,9 @@ const ListItem = ({
                     color={colors.text}
                     style={styles.margin_5}
                   />
-                  <Text style={{ color: colors.text }}>
+                  <MyText style={{ color: colors.text }}>
                     {item2.company_name}
-                  </Text>
+                  </MyText>
                 </View>
               )}
               {item2.site && (
@@ -114,7 +115,7 @@ const ListItem = ({
                     color={colors.text}
                     style={styles.margin_5}
                   />
-                  <Text style={{ color: colors.text }}>{item2.site}</Text>
+                  <MyText style={{ color: colors.text }}>{item2.site}</MyText>
                 </View>
               )}
             </View>
@@ -148,10 +149,10 @@ const ListItem = ({
             </View>
           </View>
           <View style={{ width: '75%' }}>
-            <Text style={{ color: colors.text }}>No time recorded yet</Text>
-            <Text style={{ fontWeight: 'bold', color: colors.text }}>
+            <MyText style={{ color: colors.text }}>No time recorded yet</MyText>
+            <MyText style={{ fontWeight: 'bold', color: colors.text }}>
               Tap to add time
-            </Text>
+            </MyText>
           </View>
         </View>
       </CstmPressable>

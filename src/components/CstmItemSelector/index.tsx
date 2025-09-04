@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Platform, Text, View } from 'react-native';
+import { FlatList, Platform, View } from 'react-native';
 import { Checkbox } from 'react-native-paper';
 import { useHookstate, State } from '@hookstate/core';
 import { Theme, useTheme } from '@react-navigation/native';
@@ -14,6 +14,7 @@ import ModalView from '../ModalView';
 import SearchBar from '../SearchBar';
 import SimpleLoader from '../SimpleLoader';
 import { searchFromArray } from '../../utils/helperFunctions';
+import MyText from '../MyText/MyText';
 
 const CstmItemSelector = ({ route, navigation }: any) => {
   const { colors }: Theme = useTheme();
@@ -156,7 +157,7 @@ const CstmItemSelector = ({ route, navigation }: any) => {
                       onPress={() => selectItem(item?.id, index)}
                     />
                     {item.code && (
-                      <Text
+                      <MyText
                         style={{
                           fontFamily:'FontAwesome',
                           color: colors.text,
@@ -169,7 +170,7 @@ const CstmItemSelector = ({ route, navigation }: any) => {
                             16,
                           ),
                         )}
-                      </Text>
+                      </MyText>
                     )}
                   </View>
                 }

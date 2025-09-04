@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Linking, RefreshControl } from 'react-native';
+import { View, FlatList, Linking, RefreshControl } from 'react-native';
 import { Theme, useNavigation, useTheme } from '@react-navigation/native';
 import { Divider } from 'react-native-paper';
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -22,6 +22,7 @@ import { useUpdateEffect } from '../../../utils/hooks';
 import { searchFromArray } from '../../../utils/helperFunctions';
 import { userStore } from '../../../stores/userStore';
 import { getAllUsers } from '../utils/functions';
+import MyText from '../../../components/MyText/MyText';
 
 const Staffs = () => {
   const { dark }: Theme = useTheme();
@@ -123,12 +124,12 @@ export const RenderContacts = ({
           android_ripple={{ color: dark ? '#ffffff0e' : '#0000000e' }}>
           <View style={styles.listItemContainer}>
             <View>
-              <Text
+              <MyText
                 style={{
                   color: colors.text,
                 }}>
                 {item?.name}
-              </Text>
+              </MyText>
               <View style={{ flexDirection: 'row' }}>
                 <MCI
                   name="office-building-marker-outline"
@@ -136,13 +137,13 @@ export const RenderContacts = ({
                   color={colors.text}
                   style={{ opacity: 0.5 }}
                 />
-                <Text
+                <MyText
                   style={{
                     color: colors.text,
                     ...styles.subtitleStyle,
                   }}>
                   {item?.company_name || 'N/A'}
-                </Text>
+                </MyText>
               </View>
             </View>
             <View style={styles.iconsContainer}>

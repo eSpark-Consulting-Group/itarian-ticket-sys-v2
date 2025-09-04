@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import MyText from '../MyText/MyText';
 import { Theme, useTheme } from '@react-navigation/native';
 import { Divider } from 'react-native-paper';
 
@@ -17,9 +18,9 @@ const DateSeparator = ({ text }: { text: string }) => {
           opacity: 0.2,
         }}
       />
-      <Text style={{ ...styles.centerContent, color: colors.text }}>
+  <MyText style={{ ...styles.centerContent, color: colors.text }}>
         {text}
-      </Text>
+  </MyText>
       <Divider
         style={{
           ...styles.divider_2,

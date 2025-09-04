@@ -2,11 +2,11 @@ import { Theme, useTheme } from '@react-navigation/native';
 import React, { useState } from 'react';
 import {
   View,
-  Text,
   TextInput,
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import MyText from '../../components/MyText/MyText';
 
 const NewResponseScreen: React.FC = () => {
   const [title, setTitle] = useState('');
@@ -22,7 +22,7 @@ const NewResponseScreen: React.FC = () => {
     <View
       style={[styles.container, { backgroundColor: theme.colors.background }]}
     >
-      <Text style={[styles.label, { color: theme.colors.text }]}>Title</Text>
+  <MyText style={[styles.label, { color: theme.colors.text }]}>Title</MyText>
       <TextInput
         style={[
           styles.input,
@@ -35,7 +35,7 @@ const NewResponseScreen: React.FC = () => {
         onChangeText={setTitle}
       />
 
-      <Text style={[styles.label, { color: theme.colors.text }]}>Message</Text>
+  <MyText style={[styles.label, { color: theme.colors.text }]}>Message</MyText>
       <TextInput
         style={[
           styles.input,
@@ -51,7 +51,7 @@ const NewResponseScreen: React.FC = () => {
       />
 
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-        <Text style={styles.buttonText}>Submit</Text>
+  <MyText style={styles.buttonText}>Submit</MyText>
       </TouchableOpacity>
     </View>
   );

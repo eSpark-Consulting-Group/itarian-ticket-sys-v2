@@ -1,5 +1,6 @@
 import React, { JSX } from 'react';
-import { StyleSheet, Text, View, Modal } from 'react-native';
+import { StyleSheet, View, Modal } from 'react-native';
+import MyText from '../MyText/MyText';
 import { Theme, useTheme } from '@react-navigation/native';
 import II from 'react-native-vector-icons/Ionicons';
 import CstmButton from '../CstmButton';
@@ -49,7 +50,7 @@ export default function ImageUploadOptions({
               justifyContent: 'space-between',
               alignItems: 'center',
             }}>
-            <Text
+            <MyText
               style={{
                 flex: 1,
                 fontSize: 22,
@@ -59,7 +60,7 @@ export default function ImageUploadOptions({
                 left: 15,
               }}>
               Select Image
-            </Text>
+            </MyText>
             <II
               onPress={onClose}
               name="md-close-sharp"

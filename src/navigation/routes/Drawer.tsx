@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import {
   View,
   SafeAreaView,
-  Text,
   StyleSheet,
   ScrollView,
   TouchableOpacity,
@@ -63,6 +62,7 @@ import { ticketStore } from '../../stores/ticketStore';
 import { filterUser } from '../../screens/Profile/utils';
 import { getAllUsers } from '../../screens/Agenda/utils/functions';
 import { Loader } from '../../components';
+import MyText from '../../components/MyText/MyText';
 
 const Drawer = createDrawerNavigator<ParamList>();
 
@@ -120,18 +120,18 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
         </View>
         <View style={{ flex: 0.7 }}>
           <View style={{ flex: 1, justifyContent: 'center' }}>
-            <Text style={styles.drawerTitleStyle}>
+            <MyText style={styles.drawerTitleStyle}>
               {userDetails?.attributes?.first_name +
                 ' ' +
                 userDetails?.attributes?.last_name ?? 'N/A'}
-            </Text>
-            <Text style={styles.drawerTitleStyle}>
+            </MyText>
+            <MyText style={styles.drawerTitleStyle}>
               {user?.get()?.user_name}
-            </Text>
-            <Text style={{ ...styles.drawerTitleStyle, opacity: 0.7 }}>
+            </MyText>
+            <MyText style={{ ...styles.drawerTitleStyle, opacity: 0.7 }}>
               {userDetails?.attributes?.role?.charAt(0).toUpperCase() +
                 userDetails?.attributes?.role?.slice(1)}
-            </Text>
+            </MyText>
           </View>
         </View>
       </TouchableOpacity>
@@ -190,14 +190,14 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
             }}
           />
         </View>
-        <Text
+        <MyText
           style={{
             fontSize: 12,
             fontFamily: Platform.OS === 'android' ? 'sans-serif-medium' : 'OpenSans-Medium',
             color: '#ffffff',
           }}>
           Build version ({BUILD_VERSION})
-        </Text>
+        </MyText>
       </View>
     </SafeAreaView>
   );
@@ -298,7 +298,7 @@ const Draw = () => {
           component={Search}
           options={{
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ color }}>Search</Text>
+              <MyText style={{ color }}>Search</MyText>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <Ionicons name="search" size={size} color={color} />
@@ -316,7 +316,7 @@ const Draw = () => {
               />
             ),
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ color }}>Tickets</Text>
+              <MyText style={{ color }}>Tickets</MyText>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <MCI name="calendar" size={size} color={color} />
@@ -364,7 +364,7 @@ const Draw = () => {
             headerRight: noHeader,
             headerTitle: () => <CstmHeader title="Organizations" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ color }}>Organizations</Text>
+              <MyText style={{ color }}>Organizations</MyText>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <MCI
@@ -381,7 +381,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Users" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ color }}>Users & Staffs</Text>
+              <MyText style={{ color }}>Users & Staffs</MyText>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <AD name="contacts" size={size} color={color} />
@@ -395,7 +395,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Teams" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ color }}>Teams</Text>
+              <MyText style={{ color }}>Teams</MyText>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <FA name="group" size={size} color={color} />
@@ -409,7 +409,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Sla Plan" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ color }}>Sla Plan</Text>
+              <MyText style={{ color }}>Sla Plan</MyText>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <MCI name="clock" size={size} color={color} />
@@ -449,7 +449,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Ticket Priorities" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ color }}>Ticket Priorities</Text>
+              <MyText style={{ color }}>Ticket Priorities</MyText>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <OI name="north-star" size={size} color={color} />
@@ -463,7 +463,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Ticket Status" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ color }}>Ticket Status</Text>
+              <MyText style={{ color }}>Ticket Status</MyText>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <EI name="squared-plus" size={size} color={color} />
@@ -477,7 +477,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Departments" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ color }}>Departments</Text>
+              <MyText style={{ color }}>Departments</MyText>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <MCI name="home-group" size={size} color={color} />
@@ -491,7 +491,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Locations" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ color }}>Locations</Text>
+              <MyText style={{ color }}>Locations</MyText>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <EI name="location" size={size} color={color} />
@@ -505,7 +505,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Help Topics" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ color }}>Help Topics</Text>
+              <MyText style={{ color }}>Help Topics</MyText>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <Ionicons name="newspaper-outline" size={size} color={color} />
@@ -519,7 +519,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Canned Response" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ color }}>Canned Response</Text>
+              <MyText style={{ color }}>Canned Response</MyText>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <FA name="certificate" size={size} color={color} />
@@ -533,7 +533,7 @@ const Draw = () => {
           options={{
             headerTitle: () => <CstmHeader title="Groups" />,
             drawerLabel: ({ color, focused }) => (
-              <Text style={{ color }}>Groups</Text>
+              <MyText style={{ color }}>Groups</MyText>
             ),
             drawerIcon: ({ color, size, focused }) => (
               <MCI name="group" size={size} color={color} />
@@ -556,7 +556,7 @@ const CstmHeader = ({
 }) => {
   return (
     <View>
-      <Text
+      <MyText
         style={{
           color: '#fff',
           fontSize: 20,
@@ -564,11 +564,11 @@ const CstmHeader = ({
           textAlign: 'center',
         }}>
         {title}
-      </Text>
+      </MyText>
       {subTitle && (
-        <Text style={{ textAlign: 'center', color: '#fff', fontSize: 14 }}>
+        <MyText style={{ textAlign: 'center', color: '#fff', fontSize: 14 }}>
           {subTitle}
-        </Text>
+        </MyText>
       )}
     </View>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { Theme, useIsFocused, useTheme } from '@react-navigation/native';
 import { useHookstate, State } from '@hookstate/core';
 import { Divider } from 'react-native-paper';
@@ -23,6 +23,7 @@ import { getAllTickets, getTicketsByUserId } from '../Agenda/utils/functions';
 import { RenderContacts } from '../Contacts/Screens/users';
 import { RenderContacts as RenderStaffs } from '../Contacts/Screens/staffs';
 import { MenuProvider } from 'react-native-popup-menu';
+import MyText from '../../components/MyText/MyText';
 
 const Search = ({ route, navigation }: any) => {
   const { colors, dark }: Theme = useTheme();
@@ -139,22 +140,22 @@ const Search = ({ route, navigation }: any) => {
   const CenterLabel = () => {
     return (
       <>
-        <Text
+        <MyText
           style={{
             color: colors.text,
             ...styles.emptySearchLabel,
           }}
         >
           What would you like to Search for?
-        </Text>
-        <Text
+        </MyText>
+        <MyText
           style={{
             color: colors.text,
             ...styles.emptySearchCriteria,
           }}
         >
           {`Locate Organizations, Users,\n or Tickets.`}
-        </Text>
+        </MyText>
       </>
     );
   };

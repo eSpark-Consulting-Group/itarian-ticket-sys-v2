@@ -3,7 +3,6 @@ import {
   View,
   Keyboard,
   ScrollView,
-  Text,
   FlatList,
   Image,
   LayoutAnimation,
@@ -34,6 +33,7 @@ import { Canny_CreatePost, User } from '../../types';
 import { State, useHookstate } from '@hookstate/core';
 import { userStore } from '../../stores/userStore';
 import { showMessageSafe } from '../../utils/helperFunctions';
+import MyText from '../../components/MyText/MyText';
 
 interface ImageType {
   id: number;
@@ -293,7 +293,7 @@ const CreatePost = () => {
   const ImageContainer = () => {
     return (
       <View style={{ marginTop: 10 }}>
-        <Text
+        <MyText
           style={{
             color: colors.text,
             height: moderateVerticalScale(25, 0),
@@ -302,7 +302,7 @@ const CreatePost = () => {
             fontFamily: Platform.OS === 'android' ? 'sans-serif-medium' : 'OpenSans-Medium',
           }}>
           Select Image
-        </Text>
+        </MyText>
         <View
           style={{
             flexDirection: 'row',
@@ -321,7 +321,7 @@ const CreatePost = () => {
                 alignItems: 'center',
               }}
               onPress={() => handleUploadImage()}>
-              <Text
+              <MyText
                 style={{
                   color: colors.text,
                   textAlignVertical: 'center',
@@ -331,7 +331,7 @@ const CreatePost = () => {
                   fontFamily: Platform.OS === 'android' ? 'sans-serif-medium' : 'OpenSans-Medium',
                 }}>
                 Upload Image
-              </Text>
+              </MyText>
             </CstmPressable>
           </View>
         </View>

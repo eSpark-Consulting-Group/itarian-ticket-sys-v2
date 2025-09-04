@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, TextInput } from 'react-native';
 import { Theme, useTheme } from '@react-navigation/native';
 
 import styles from './style';
 import GapView from '../GapView';
+import MyText from '../MyText/MyText';
 
 const CstmMultiLine = ({
   title,
@@ -24,13 +25,13 @@ const CstmMultiLine = ({
     <View style={{ width: width }}>
       {title && (
         <>
-          <Text
+          <MyText
             style={{
               color: colors.text,
               ...styles.labelStyle,
             }}>
             {title}
-          </Text>
+          </MyText>
         </>
       )}
       <TextInput

@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   View,
   Modal,
   Image,
@@ -11,6 +10,7 @@ import II from 'react-native-vector-icons/Ionicons';
 // @ts-ignore
 import Pinchable from 'react-native-pinchable';
 import GapView from '../GapView';
+import MyText from '../MyText/MyText';
 
 type colors = {
   primary: string;
@@ -72,7 +72,7 @@ export default function PreviewImage({
                 size={30}
               />
               <GapView length={90} mode="horizontal" />
-              <Text style={{ color: '#fff', fontSize: 20 }}>Preview Image</Text>
+              <MyText style={{ color: '#fff', fontSize: 20 }}>Preview Image</MyText>
             </View>
           </View>
           <Pinchable style={{ width: '100%' }}>

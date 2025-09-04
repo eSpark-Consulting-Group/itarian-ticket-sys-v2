@@ -1,6 +1,7 @@
 import { Theme, useTheme } from '@react-navigation/native';
 import React from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import MyText from '../MyText/MyText';
 
 type CustomSwitchProps = {
   options: string[];
@@ -36,7 +37,7 @@ const CustomSwitch: React.FC<CustomSwitchProps> = ({
             ]}
             onPress={() => onChange(index)}
           >
-            <Text
+            <MyText
               style={[
                 styles.optionText,
                 { color: dark ? '#aaa' : '#555' },
@@ -47,7 +48,7 @@ const CustomSwitch: React.FC<CustomSwitchProps> = ({
               ]}
             >
               {option}
-            </Text>
+            </MyText>
           </TouchableOpacity>
         );
       })}

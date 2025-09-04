@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, FlatList, KeyboardTypeOptions, Alert, Text, Platform } from 'react-native';
+import { View, FlatList, KeyboardTypeOptions, Alert, Platform } from 'react-native';
+import MyText from '../../../components/MyText/MyText';
 import {
   useTheme,
   Theme,
@@ -127,7 +128,7 @@ export default function Details() {
       ),
       leftChild: (
         <View>
-          <Text
+          <MyText
             style={{
               fontFamily: 'FontAwesome',
               color: colors.text,
@@ -135,7 +136,7 @@ export default function Details() {
               textAlignVertical: 'center',
             }}>
             {String.fromCharCode(parseInt(extractFont, 16))}
-          </Text>
+          </MyText>
         </View>
       ),
       headerTitle: 'Icon Class',
@@ -319,7 +320,7 @@ export default function Details() {
       obj[routes?.params?.item].selectedItem = routes?.params?.selected;
       obj[routes?.params?.item].leftChild = (
         <View>
-          <Text
+          <MyText
             style={{
               fontFamily: 'FontAwesome',
               color: colors.text,
@@ -334,7 +335,7 @@ export default function Details() {
                 16,
               ),
             )}
-          </Text>
+          </MyText>
         </View>
       );
       setDataSource([...obj]);
