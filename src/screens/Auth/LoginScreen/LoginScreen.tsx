@@ -30,6 +30,7 @@ import Images from '../../../assets/Images';
 import { userStore } from '../../../stores/userStore';
 import { handleLoginUser } from '../utils/functions';
 import { globalState } from '../../../stores/globalAppState';
+import MyText from '../../../components/MyText/MyText';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email format').required().label('Email'),
@@ -172,7 +173,7 @@ const LoginScreen = ({ navigation }: NativeStackHeaderProps) => {
                       status={rememberMe ? 'checked' : 'unchecked'}
                       onPress={() => setRememberMe(!rememberMe)}
                     />
-                    <Text style={{ color: colors.text }}>Remember Me</Text>
+                    <MyText style={{ color: colors.text }}>Remember Me</MyText>
                     <View style={{ flex: 0.1 }} />
                   </View>
                   <View style={{ marginVertical: 10 }}>

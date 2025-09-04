@@ -3,6 +3,7 @@ import { View, ScrollView, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import { Theme, useTheme } from '@react-navigation/native';
 import {
   DashboardCard,
   DashboardReport,
@@ -10,6 +11,8 @@ import {
 } from '../../components';
 
 const Dashboard = () => {
+  const theme: Theme = useTheme();
+  const styles = useStyles(theme);
   return (
     <View style={styles.container}>
       {/* <DashboardHeader /> */}
@@ -20,11 +23,13 @@ const Dashboard = () => {
       >
         <View style={styles.cardRow}>
           <DashboardCard
+            backgroundColor={theme.colors.background}
             icon={<Icon name="mail-outline" size={20} color="#5F6368" />}
             label="Inbox"
             value={175}
           />
           <DashboardCard
+            backgroundColor={theme.colors.background}
             icon={
               <MaterialIcon name="ticket-outline" size={20} color="#5F6368" />
             }
@@ -32,6 +37,7 @@ const Dashboard = () => {
             value={0}
           />
           <DashboardCard
+            backgroundColor={theme.colors.background}
             icon={<Icon name="people-outline" size={20} color="#5F6368" />}
             label="Unassigned"
             value={139}
@@ -40,16 +46,19 @@ const Dashboard = () => {
 
         <View style={styles.cardRow}>
           <DashboardCard
+            backgroundColor={theme.colors.background}
             icon={<Icon name="time-outline" size={20} color="#5F6368" />}
             label="Overdue"
             value={1}
           />
           <DashboardCard
+            backgroundColor={theme.colors.background}
             icon={<Icon name="calendar-outline" size={20} color="#5F6368" />}
             label="Due Today"
             value={0}
           />
           <DashboardCard
+            backgroundColor={theme.colors.background}
             icon={<Icon name="trash-outline" size={20} color="#5F6368" />}
             label="Trash"
             value={20}
@@ -77,12 +86,13 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F2F2F2' },
-  scrollView: { backgroundColor: '#fff', padding: 15 },
-  cardRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 12,
-  },
-});
+const useStyles = (theme: any) =>
+  StyleSheet.create({
+    container: { flex: 1, backgroundColor: theme.colors.background },
+    scrollView: { backgroundColor: theme.colors.card, padding: 15 },
+    cardRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginBottom: 12,
+    },
+  });

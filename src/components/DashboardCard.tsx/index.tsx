@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import MyText from '../MyText/MyText';
 
 interface DashboardCardProps {
   icon: React.ReactNode;
@@ -18,9 +19,9 @@ const DashboardCard: React.FC<DashboardCardProps> = ({
     <View style={[styles.card, { backgroundColor }]}>
       <View style={styles.rowItem}>
         {icon}
-        <Text style={styles.cardLabel}>{label}</Text>
+        <MyText style={styles.cardLabel}>{label}</MyText>
       </View>
-      <Text style={styles.cardNumber}>{value}</Text>
+      <MyText style={styles.cardNumber}>{value}</MyText>
     </View>
   );
 };
@@ -44,6 +45,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginVertical: 4,
-    color: '#000',
+    // color: '#000',
   },
 });

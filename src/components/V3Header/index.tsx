@@ -1,6 +1,7 @@
 import { Theme, useTheme } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 type HeaderProps = {
@@ -21,11 +22,16 @@ const V3Header: React.FC<HeaderProps> = ({
   const theme: Theme = useTheme();
   const isDark = theme.dark;
 
+  const insets = useSafeAreaInsets()
   return (
     <View
       style={[
         styles.container,
-        { backgroundColor: isDark ? theme.colors.card : '#F2F2F2' },
+        {
+          backgroundColor: isDark ? theme.colors.card : '#F2F2F2',
+          paddingTop: insets.top,
+          paddingBottom: 10,
+        },
       ]}
     >
       {/* Left Section */}
@@ -87,7 +93,7 @@ const V3Header: React.FC<HeaderProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    height: 56,
+    minHeight: 56,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

@@ -1,6 +1,7 @@
 import { Theme, useTheme } from '@react-navigation/native';
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import MyText from '../MyText/MyText';
 
 interface StatsRow {
   label: string;
@@ -21,7 +22,7 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({
   const theme: Theme = useTheme();
   return (
     <>
-      <Text style={styles.sectionTitle}>{title}</Text>
+      <MyText style={styles.sectionTitle}>{title}</MyText>
       <View
         style={[
           styles.statsCard,
@@ -30,16 +31,16 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({
       >
         {/* Header row */}
         <View style={[styles.statsRow, styles.headerRow]}>
-          <Text style={styles.headerText}>{headers[0]}</Text>
-          <Text style={styles.headerText}>{headers[1]}</Text>
+          <MyText style={styles.headerText}>{headers[0]}</MyText>
+          <MyText style={styles.headerText}>{headers[1]}</MyText>
         </View>
 
         {/* Data rows */}
         {rows.map((row, index) => (
           <React.Fragment key={index}>
             <View style={styles.statsRow}>
-              <Text style={styles.statsLabel}>{row.label}</Text>
-              <Text style={styles.statsValue}>{row.value}</Text>
+              <MyText style={styles.statsLabel}>{row.label}</MyText>
+              <MyText style={styles.statsValue}>{row.value}</MyText>
             </View>
 
             {index !== rows.length - 1 && <View style={styles.divider} />}
@@ -57,7 +58,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginVertical: 10,
-    // color: '#000',
   },
   divider: {
     height: 1,
@@ -84,6 +84,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
-  statsLabel: { fontSize: 14, fontWeight: '600', color: '#000' },
-  statsValue: { fontSize: 14, color: '#333' },
+  statsLabel: { fontSize: 14, fontWeight: '600',  },
+  statsValue: { fontSize: 14, opacity: 0.8},
 });
