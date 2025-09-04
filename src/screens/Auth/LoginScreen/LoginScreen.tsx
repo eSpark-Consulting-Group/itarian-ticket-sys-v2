@@ -30,6 +30,8 @@ import Images from '../../../assets/Images';
 import { userStore } from '../../../stores/userStore';
 import { handleLoginUser } from '../utils/functions';
 import { globalState } from '../../../stores/globalAppState';
+import { LightTheme } from '../../../theme/colors';
+// import MyText from '../../../components/MyText/MyText';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email format').required().label('Email'),
@@ -41,7 +43,8 @@ const LoginScreen = ({ navigation }: NativeStackHeaderProps) => {
   const biometricState: State<boolean> = useHookstate(globalState.useBiometric);
   const [rememberMe, setRememberMe] = useState(false);
   const [keyboardStatus, setKeyboardStatus] = useState(false);
-  const { colors }: Theme = useTheme();
+  // const { colors }: Theme = useTheme();
+  const colors = LightTheme.colors;
 
   useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -164,7 +167,7 @@ const LoginScreen = ({ navigation }: NativeStackHeaderProps) => {
                   ) : (
                     <View />
                   )}
-                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                     <View style={{ flex: 0.1 }} />
                     <Checkbox
                       color={colors.primary}

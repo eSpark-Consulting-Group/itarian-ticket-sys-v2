@@ -3,7 +3,6 @@ import {
   View,
   FlatList,
   StyleSheet,
-  Text,
   TouchableOpacity,
 } from 'react-native';
 import { useTheme } from '@react-navigation/native';
@@ -13,6 +12,7 @@ import { Checkbox, Divider } from 'react-native-paper';
 import { NotFound } from '../../components';
 import II from 'react-native-vector-icons/Ionicons';
 import { Touchable } from 'react-native';
+import MyText from '../../components/MyText/MyText';
 
 // Dummy data for testing
 const dummyTickets = [
@@ -141,16 +141,16 @@ const TicketsScreen = ({ navigation }: any) => {
           }}
         >
           <TouchableOpacity onPress={toggleSelectionMode}>
-            <Text style={{ color: dark ? '#fff' : '#000' }}>
+            <MyText style={{ color: dark ? '#fff' : '#000' }}>
               {selectionMode ? 'Cancel' : 'Select'}
-            </Text>
+            </MyText>
           </TouchableOpacity>
           {/* might have other options, not sure yet */}
           <TouchableOpacity
             style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
             onPress={toggleSort}
           >
-            <Text style={{ color: dark ? '#fff' : '#000' }}>Sort By</Text>
+            <MyText style={{ color: dark ? '#fff' : '#000' }}>Sort By</MyText>
             <II name="swap-vertical" size={20} color={dark ? '#fff' : '#000'} />
           </TouchableOpacity>
         </View>
@@ -167,9 +167,9 @@ const TicketsScreen = ({ navigation }: any) => {
               onPress={toggleSelectAll}
               color={colors.primary}
             />
-            <Text style={{ marginLeft: 8, color: dark ? '#fff' : '#000' }}>
+            <MyText style={{ marginLeft: 8, color: dark ? '#fff' : '#000' }}>
               Select All
-            </Text>
+            </MyText>
           </View>
         )}
 

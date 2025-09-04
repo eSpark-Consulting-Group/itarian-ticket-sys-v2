@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Image, TouchableOpacity } from 'react-native';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import { Theme, useTheme } from '@react-navigation/native';
 // @ts-ignore
@@ -10,6 +10,7 @@ import { SCREEN_HEIGHT, WINDOW_HEIGHT } from '../../../constants';
 import styles from './style';
 import { CstmButton } from '../../../components';
 import { handleVerifyOTP, requestSmsOtp } from '../utils/functions';
+import MyText from '../../../components/MyText/MyText';
 
 const OTPScreen = ({ navigation, route }: any) => {
   const paramsData = route?.params?.data;
@@ -60,20 +61,20 @@ const OTPScreen = ({ navigation, route }: any) => {
         />
       </View>
       <View style={styles.imageContainer}>
-        <Text style={{ fontWeight: 'bold', color: colors.text, fontSize: 25 }}>
+        <MyText style={{ fontWeight: 'bold', color: colors.text, fontSize: 25 }}>
           OTP Verification
-        </Text>
-        <Text style={{ color: colors.text }}>
+        </MyText>
+        <MyText style={{ color: colors.text }}>
           We sent your code to your{' '}
           {paramsData?.otpType == 'sms'
             ? 'Phone Number'
             : '2 Factor Authenticator App'}
-        </Text>
+        </MyText>
         {!expired && paramsData?.otpType == 'sms' && (
           <View style={{ flexDirection: 'row' }}>
-            <Text style={{ marginVertical: 5, color: colors.text }}>
+            <MyText style={{ marginVertical: 5, color: colors.text }}>
               OTP will expires in
-            </Text>
+            </MyText>
             <CountDown
               until={counter}
               onFinish={() => {
@@ -138,15 +139,15 @@ const OTPScreen = ({ navigation, route }: any) => {
               flexDirection: 'row',
               alignSelf: 'center',
             }}>
-            <Text
+            <MyText
               style={{
                 marginVertical: 5,
                 color: colors.text,
                 opacity: 0.8,
               }}>
               Didn't recieve OTP?{' '}
-            </Text>
-            <Text
+            </MyText>
+            <MyText
               style={[
                 styles.resendCode,
                 {
@@ -155,7 +156,7 @@ const OTPScreen = ({ navigation, route }: any) => {
                 },
               ]}>
               Resend OTP Code
-            </Text>
+            </MyText>
           </TouchableOpacity>
         )}
       </View>

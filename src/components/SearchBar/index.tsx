@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { Searchbar as Search } from 'react-native-paper';
 import { Theme, useTheme } from '@react-navigation/native';
 import FA from 'react-native-vector-icons/FontAwesome';
@@ -18,6 +18,7 @@ import {
 
 import styles from './style';
 import { globalState } from '../../stores/globalAppState';
+import MyText from '../MyText/MyText';
 
 const SearchBar = ({
   withTag = false,
@@ -198,9 +199,9 @@ const SearchBar = ({
                   }}
                 >
                   {icon}
-                  <Text style={{ color: colors.text, marginLeft: 8, flex: 1 }}>
+                  <MyText style={{ color: colors.text, marginLeft: 8, flex: 1 }}>
                     {label}
-                  </Text>
+                  </MyText>
                   {check === value && (
                     <Feather name="check" color={colors.primary} size={20} />
                   )}

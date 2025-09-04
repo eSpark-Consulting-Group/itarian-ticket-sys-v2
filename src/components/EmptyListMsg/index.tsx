@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import MyText from '../MyText/MyText';
 import { Theme, useTheme } from '@react-navigation/native';
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -16,9 +17,9 @@ const EmptyListMsg = ({
   return (
     <View style={styles.emptyListContainer}>
       <MCI name={iconName} color={'#8585858a'} size={100} />
-      <Text style={{ color: colors.text, ...styles.emptyListLabel }}>
+  <MyText style={{ color: colors.text, ...styles.emptyListLabel }}>
         No {label} Found
-      </Text>
+  </MyText>
       <View style={styles.emptyListAdjuster} />
     </View>
   );

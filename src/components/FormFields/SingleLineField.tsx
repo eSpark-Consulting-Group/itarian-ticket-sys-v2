@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import {
   StyleSheet,
-  Text,
   View,
   ViewStyle,
   KeyboardTypeOptions,
@@ -20,6 +19,7 @@ import {
 } from '..';
 import { TextEditor } from '../TextEditor';
 import { WINDOW_WIDTH } from '../../constants';
+import MyText from '../MyText/MyText';
 
 interface Props {
   leftIcon?: string;
@@ -100,14 +100,14 @@ const SingleLineField = ({
         <View>
           {subTitle ? (
             <>
-              <Text
+              <MyText
                 style={{
                   ...styles.subTitle,
                   color: colors.text,
                   textTransform: 'capitalize',
                 }}>
                 {subTitle}
-              </Text>
+              </MyText>
               <GapView mode="vertical" length={4} />
             </>
           ) : null}
@@ -171,7 +171,7 @@ const SingleLineField = ({
                     </>
                   )}
                   {!listTitle || title == 'Please Select' || !Boolean(title) ? (
-                    <Text
+                    <MyText
                       style={{
                         color: colors.text,
                         ...styles.title,
@@ -179,7 +179,7 @@ const SingleLineField = ({
                         textTransform: 'capitalize'
                       }}>
                       {!Boolean(title) ? 'Please Select' : title}
-                    </Text>
+                    </MyText>
                   ) : (
                     <View
                       style={{
@@ -191,7 +191,7 @@ const SingleLineField = ({
                         ?.split(',')
                         .map((titleVal: string, index: number) => {
                           return (
-                            <Text
+                            <MyText
                               key={`${titleVal}-${index}`}
                               style={{
                                 color: '#ffffff',
@@ -207,7 +207,7 @@ const SingleLineField = ({
                                 opacity: 0.9,
                               }}>
                               {titleVal}
-                            </Text>
+                            </MyText>
                           );
                         })}
                     </View>

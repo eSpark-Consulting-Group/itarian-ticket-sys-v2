@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Theme, useTheme } from '@react-navigation/native';
+import MyText from '../MyText/MyText';
 
 const StopWatch = ({
   start = false,
@@ -90,10 +91,10 @@ const StopWatch = ({
           { backgroundColor: dark ? '#000' : '#fff' },
         ]}>
         <View>
-          <Text
+          <MyText
             style={{ color: colors.primary, fontWeight: 'bold', fontSize: 16 }}>
             {voiceDuration}
-          </Text>
+          </MyText>
         </View>
       </View>
     </>

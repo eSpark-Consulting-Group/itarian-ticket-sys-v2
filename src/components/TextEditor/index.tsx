@@ -1,6 +1,6 @@
 import { Theme, useTheme } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import {
   actions,
   RichEditor,
@@ -11,6 +11,7 @@ import CstmColorPicker from '../CstmColorPicker';
 import styles from './styles';
 import MI from 'react-native-vector-icons/MaterialIcons';
 import FA5 from 'react-native-vector-icons/FontAwesome5';
+import MyText from '../MyText/MyText';
 
 export const TextEditor = ({
   value = '',
@@ -91,19 +92,19 @@ export const TextEditor = ({
           ]}
           iconMap={{
             [actions.heading1]: ({ tintColor }) => (
-              <Text style={[{ color: tintColor }]}>H1</Text>
+              <MyText style={[{ color: tintColor }]}>H1</MyText>
             ),
             [actions.heading2]: ({ tintColor }) => (
-              <Text style={[{ color: tintColor }]}>H2</Text>
+              <MyText style={[{ color: tintColor }]}>H2</MyText>
             ),
             [actions.heading3]: ({ tintColor }) => (
-              <Text style={[{ color: tintColor }]}>H3</Text>
+              <MyText style={[{ color: tintColor }]}>H3</MyText>
             ),
             [actions.heading4]: ({ tintColor }) => (
-              <Text style={[{ color: tintColor }]}>H4</Text>
+              <MyText style={[{ color: tintColor }]}>H4</MyText>
             ),
             [actions.setParagraph]: ({ tintColor }) => (
-              <Text style={[{ color: tintColor }]}>P</Text>
+              <MyText style={[{ color: tintColor }]}>P</MyText>
             ),
             [actions.hiliteColor]: params => {
               return (

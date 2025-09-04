@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import {
   View,
-  Text,
   FlatList,
   RefreshControl,
   ActivityIndicator,
@@ -10,6 +9,7 @@ import {
   TextInput,
   Platform,
 } from 'react-native';
+import MyText from '../../components/MyText/MyText';
 import {
   useTheme,
   useNavigation,
@@ -289,15 +289,15 @@ const SendFeedbackScreen = () => {
                 justifyContent: 'center',
                 backgroundColor: colors.primary,
               }}>
-              <Text
+              <MyText
                 style={{ fontSize: 20, fontWeight: 'bold', color: '#ffffff' }}>
                 {item?.author?.name.substring(0, 1).toUpperCase()}
-              </Text>
+              </MyText>
             </View>
           )}
         </View>
         <View style={{ flex: 0.7 }}>
-          <Text
+          <MyText
             style={{
               color: colors.text,
               fontFamily: Platform.OS === 'android' ? 'sans-serif' : 'OpenSans-Medium',
@@ -306,15 +306,15 @@ const SendFeedbackScreen = () => {
             }}
             numberOfLines={2}>
             {item.title}
-          </Text>
+          </MyText>
           <View style={{ flexDirection: 'row' }}>
-            <Text
+            <MyText
               style={{
                 color: colors.text,
                 fontFamily: Platform.OS === 'android' ? 'sans-serif' : 'OpenSans-Medium',
               }}>
               {item?.author?.name}
-            </Text>
+            </MyText>
             <View
               style={{
                 width: 4,
@@ -326,18 +326,18 @@ const SendFeedbackScreen = () => {
                 margin: 8,
               }}
             />
-            <Text
+            <MyText
               style={{
                 color: colors.text,
                 fontSize: 12,
                 textAlignVertical: 'center',
               }}>
               {moment(item?.created).format('MMM DD')}
-            </Text>
+            </MyText>
           </View>
-          <Text style={{ color: colors.text, fontFamily: Platform.OS === 'android' ? 'sans-serif-medium' : 'OpenSans-Medium' }}>
+          <MyText style={{ color: colors.text, fontFamily: Platform.OS === 'android' ? 'sans-serif-medium' : 'OpenSans-Medium' }}>
             Status: {item?.status?.toUpperCase()}
-          </Text>
+          </MyText>
         </View>
         <View
           style={{
@@ -359,9 +359,9 @@ const SendFeedbackScreen = () => {
               color={'#ffffff'}
               style={{ alignSelf: 'center', margin: 2 }}
             />
-            <Text style={{ textAlignVertical: 'center', color: '#ffffff' }}>
+            <MyText style={{ textAlignVertical: 'center', color: '#ffffff' }}>
               {item.score}
-            </Text>
+            </MyText>
           </View>
           <GapView mode="horizontal" />
           <View
@@ -379,9 +379,9 @@ const SendFeedbackScreen = () => {
               color={'#ffffff'}
               style={{ alignSelf: 'center', margin: 2 }}
             />
-            <Text style={{ textAlignVertical: 'center', color: '#ffffff' }}>
+            <MyText style={{ textAlignVertical: 'center', color: '#ffffff' }}>
               {item.commentCount}
-            </Text>
+            </MyText>
           </View>
         </View>
       </CstmPressable>
@@ -414,7 +414,7 @@ const SendFeedbackScreen = () => {
             alignItems: 'center',
             justifyContent: 'space-around',
           }}>
-          <Text
+          <MyText
             style={{
               color: colors.text,
               fontFamily: Platform.OS === 'android' ? 'sans-serif' : 'OpenSans-Medium',
@@ -423,10 +423,10 @@ const SendFeedbackScreen = () => {
             }}
             numberOfLines={2}>
             {item.name}
-          </Text>
-          <Text style={{ color: colors.text, fontFamily: Platform.OS === 'android' ? 'sans-serif-medium' : 'OpenSans-Medium' }}>
+          </MyText>
+          <MyText style={{ color: colors.text, fontFamily: Platform.OS === 'android' ? 'sans-serif-medium' : 'OpenSans-Medium' }}>
             Posts: {item.postCount}
-          </Text>
+          </MyText>
         </View>
       </CstmPressable>
     );
@@ -527,14 +527,14 @@ const SendFeedbackScreen = () => {
                   />
                 </CstmPressable>
                 <GapView mode="horizontal" />
-                <Text
+                <MyText
                   style={{
                     color: colors.text,
                     fontFamily: Platform.OS === 'android' ? 'sans-serif' : 'OpenSans-Medium',
                     fontSize: 20,
                   }}>
                   Posts
-                </Text>
+                </MyText>
               </View>
             </View>
             <View style={{ marginRight: 10 }}>
@@ -614,14 +614,14 @@ const SendFeedbackScreen = () => {
               height: WINDOW_HEIGHT * 0.06,
               marginBottom: 5,
             }}>
-            <Text
+            <MyText
               style={{
                 color: colors.text,
                 fontFamily: Platform.OS === 'android' ? 'sans-serif' : 'OpenSans-Medium',
                 fontSize: 20,
               }}>
               Boards
-            </Text>
+            </MyText>
           </View>
           <Divider style={{ height: 2, backgroundColor: colors.primary }} />
         </View>

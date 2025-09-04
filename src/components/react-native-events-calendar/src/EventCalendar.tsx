@@ -3,11 +3,11 @@ import {
   View,
   TouchableOpacity,
   Image,
-  Text,
   VirtualizedList,
   Alert,
   VirtualizedListProps,
 } from 'react-native';
+import MyText from '../../MyText/MyText';
 import _ from 'lodash';
 import moment from 'moment';
 import React, { createRef } from 'react';
@@ -119,9 +119,9 @@ export default class EventCalendar extends React.Component<MyProps, any> {
             />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => this.setState({ showDate: true })}>
-            <Text style={styleConstructor(this.props.styles).headerText}>
+            <MyText style={styleConstructor(this.props.styles).headerText}>
               {this.state.date.format(formatHeader || 'DD MMMM YYYY')}
-            </Text>
+            </MyText>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => this._goToPage(1)}>
             <Image

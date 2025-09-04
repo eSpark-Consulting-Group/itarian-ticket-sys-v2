@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, KeyboardTypeOptions } from 'react-native';
+import { View, TextInput, KeyboardTypeOptions } from 'react-native';
+import MyText from '../MyText/MyText';
 import { Theme, useTheme } from '@react-navigation/native';
 
 import GapView from '../GapView';
@@ -28,7 +29,7 @@ const CstmTitleInput = ({
       {title && (
         <>
           <GapView mode="vertical" />
-          <Text style={{ color: colors.text, opacity: 0.8 }}>{title}</Text>
+          <MyText style={{ color: colors.text, opacity: 0.8 }}>{title}</MyText>
         </>
       )}
       <GapView mode="vertical" length={5} />

@@ -1,7 +1,9 @@
 import { Theme, useTheme } from '@react-navigation/native';
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View,  TouchableOpacity, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
+import MyText from '../MyText/MyText';
 
 type HeaderProps = {
   title: string;
@@ -21,11 +23,16 @@ const V3Header: React.FC<HeaderProps> = ({
   const theme: Theme = useTheme();
   const isDark = theme.dark;
 
+  const insets = useSafeAreaInsets()
   return (
     <View
       style={[
         styles.container,
-        { backgroundColor: isDark ? theme.colors.card : '#F2F2F2' },
+        {
+          backgroundColor: isDark ? theme.colors.card : '#F2F2F2',
+          paddingTop: insets.top,
+          paddingBottom: 10,
+        },
       ]}
     >
       {/* Left Section */}
@@ -42,11 +49,11 @@ const V3Header: React.FC<HeaderProps> = ({
       )}
 
       {/* Title */}
-      <Text
+      <MyText
         style={[styles.title, { color: isDark ? theme.colors.text : '#000' }]}
       >
         {title}
-      </Text>
+      </MyText>
 
       {/* Right Section */}
       <View style={styles.right}>
@@ -75,9 +82,9 @@ const V3Header: React.FC<HeaderProps> = ({
             onPress={rightText.onPress}
           >
             <Icon size={24} name="add" color={isDark ? '#fff' : '#1185E6'} />
-            <Text style={{ color: isDark ? '#fff' : '#1185E6', fontSize: 16 }}>
+            <MyText style={{ color: isDark ? '#fff' : '#1185E6', fontSize: 16 }}>
               {rightText.label}
-            </Text>
+            </MyText>
           </TouchableOpacity>
         )}
       </View>
@@ -87,7 +94,7 @@ const V3Header: React.FC<HeaderProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    height: 56,
+    minHeight: 56,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

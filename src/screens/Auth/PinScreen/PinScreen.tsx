@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, Alert } from 'react-native';
+import { View, Image, Alert } from 'react-native';
 import { Theme, useTheme } from '@react-navigation/native';
 import II from 'react-native-vector-icons/Ionicons';
 import AndroidOpenSettings from 'react-native-android-open-settings';
@@ -18,6 +18,7 @@ import { userStore } from '../../../stores/userStore';
 import { alert_Dur } from '../../../constants';
 import { User } from '../../../types';
 import { showMessageSafe } from '../../../utils/helperFunctions';
+import MyText from '../../../components/MyText/MyText';
 
 const PinScreen = ({ route, navigation }: any) => {
   const user: State<User> = useHookstate(userStore);
@@ -94,9 +95,9 @@ const PinScreen = ({ route, navigation }: any) => {
         />
       </View>
       {typeNewPin && (
-        <Text style={{ color: colors.text, fontSize: 16, fontWeight: '500' }}>
+        <MyText style={{ color: colors.text, fontSize: 16, fontWeight: '500' }}>
           {confirmPin ? 'Confirm New PIN' : 'New PIN'}
-        </Text>
+        </MyText>
       )}
       <OTPInputView
         style={{ width: '60%', height: 100, alignSelf: 'center' }}
@@ -134,9 +135,9 @@ const PinScreen = ({ route, navigation }: any) => {
           onPress={() => setTypeNewPin(true)}
           // android_ripple={{borderless: true}}
         >
-          <Text style={{ color: colors.text, fontSize: 16, fontWeight: '500' }}>
+          <MyText style={{ color: colors.text, fontSize: 16, fontWeight: '500' }}>
             Forgot PIN?
-          </Text>
+          </MyText>
         </CstmPressable>
       )}
       <View style={{ width: '80%', alignItems: 'center' }}>
@@ -144,51 +145,51 @@ const PinScreen = ({ route, navigation }: any) => {
           <CstmPressable
             onPress={() => handleDigit('1')}
             android_ripple={{ borderless: true }}>
-            <Text style={{ ...styles.text, color: colors.text }}>1</Text>
+            <MyText style={{ ...styles.text, color: colors.text }}>1</MyText>
           </CstmPressable>
           <CstmPressable
             onPress={() => handleDigit('2')}
             android_ripple={{ borderless: true }}>
-            <Text style={{ ...styles.text, color: colors.text }}>2</Text>
+            <MyText style={{ ...styles.text, color: colors.text }}>2</MyText>
           </CstmPressable>
           <CstmPressable
             onPress={() => handleDigit('3')}
             android_ripple={{ borderless: true }}>
-            <Text style={{ ...styles.text, color: colors.text }}>3</Text>
+            <MyText style={{ ...styles.text, color: colors.text }}>3</MyText>
           </CstmPressable>
         </View>
         <View style={{ ...styles.row }}>
           <CstmPressable
             onPress={() => handleDigit('4')}
             android_ripple={{ borderless: true }}>
-            <Text style={{ ...styles.text, color: colors.text }}>4</Text>
+            <MyText style={{ ...styles.text, color: colors.text }}>4</MyText>
           </CstmPressable>
           <CstmPressable
             onPress={() => handleDigit('5')}
             android_ripple={{ borderless: true }}>
-            <Text style={{ ...styles.text, color: colors.text }}>5</Text>
+            <MyText style={{ ...styles.text, color: colors.text }}>5</MyText>
           </CstmPressable>
           <CstmPressable
             onPress={() => handleDigit('6')}
             android_ripple={{ borderless: true }}>
-            <Text style={{ ...styles.text, color: colors.text }}>6</Text>
+            <MyText style={{ ...styles.text, color: colors.text }}>6</MyText>
           </CstmPressable>
         </View>
         <View style={{ ...styles.row }}>
           <CstmPressable
             onPress={() => handleDigit('7')}
             android_ripple={{ borderless: true }}>
-            <Text style={{ ...styles.text, color: colors.text }}>7</Text>
+            <MyText style={{ ...styles.text, color: colors.text }}>7</MyText>
           </CstmPressable>
           <CstmPressable
             onPress={() => handleDigit('8')}
             android_ripple={{ borderless: true }}>
-            <Text style={{ ...styles.text, color: colors.text }}>8</Text>
+            <MyText style={{ ...styles.text, color: colors.text }}>8</MyText>
           </CstmPressable>
           <CstmPressable
             onPress={() => handleDigit('9')}
             android_ripple={{ borderless: true }}>
-            <Text style={{ ...styles.text, color: colors.text }}>9</Text>
+            <MyText style={{ ...styles.text, color: colors.text }}>9</MyText>
           </CstmPressable>
         </View>
         <View style={{ ...styles.row }}>
@@ -207,7 +208,7 @@ const PinScreen = ({ route, navigation }: any) => {
           <CstmPressable
             onPress={() => handleDigit('0')}
             android_ripple={{ borderless: true }}>
-            <Text style={{ ...styles.text, color: colors.text }}>0</Text>
+            <MyText style={{ ...styles.text, color: colors.text }}>0</MyText>
           </CstmPressable>
           <CstmPressable
             onPress={() => setPin(pin.slice(0, pin.length - 1))}

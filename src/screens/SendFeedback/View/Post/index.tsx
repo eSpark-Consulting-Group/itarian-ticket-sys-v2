@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useRef } from 'react';
 import {
-  Text,
   View,
   FlatList,
   Image,
@@ -39,6 +38,7 @@ import {
 } from '../../../../components';
 import { WINDOW_HEIGHT, WINDOW_WIDTH } from '../../../../constants';
 import { Vote, Vote_CD } from '../../../../types';
+import MyText from '../../../../components/MyText/MyText';
 
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -297,15 +297,15 @@ export default function Post() {
                   height: 30,
                   borderRadius: 30,
                 }}>
-                <Text style={{ color: '#fff', fontWeight: 'bold' }}>
+                <MyText style={{ color: '#fff', fontWeight: 'bold' }}>
                   {postDetail?.author?.name.substring(0, 1).toUpperCase()}
-                </Text>
+                </MyText>
               </View>
             )}
             <GapView mode="horizontal" length={5} />
-            <Text style={{ color: colors.text }}>
+            <MyText style={{ color: colors.text }}>
               {postDetail?.author?.name}
-            </Text>
+            </MyText>
             <View
               style={{
                 width: 4,
@@ -317,9 +317,9 @@ export default function Post() {
                 marginTop: 8,
               }}
             />
-            <Text style={{ color: colors.text }}>
+            <MyText style={{ color: colors.text }}>
               {moment(postDetail?.created).fromNow()}
-            </Text>
+            </MyText>
           </View>
           <CstmPressable
             style={{ display: 'none' }}
@@ -335,13 +335,13 @@ export default function Post() {
             />
           </CstmPressable>
         </View>
-        <Text style={{ color: colors.text, fontSize: 24 }}>
+        <MyText style={{ color: colors.text, fontSize: 24 }}>
           {postDetail?.title}
-        </Text>
+        </MyText>
         <GapView mode="vertical" />
-        <Text style={{ color: colors.text, opacity: 0.7 }}>
+        <MyText style={{ color: colors.text, opacity: 0.7 }}>
           {postDetail?.details}
-        </Text>
+        </MyText>
         <FlatList
           horizontal
           ItemSeparatorComponent={() => (
@@ -376,7 +376,7 @@ export default function Post() {
                 }}
               />
               <GapView mode="horizontal" length={5} />
-              <Text
+              <MyText
                 style={{
                   color: colors.text + '88',
                   fontSize: 16,
@@ -384,7 +384,7 @@ export default function Post() {
                   fontWeight: 'bold',
                 }}>
                 {postDetail?.commentCount}
-              </Text>
+              </MyText>
             </CstmPressable>
             <GapView mode="horizontal" length={20} />
             <CstmPressable
@@ -409,7 +409,7 @@ export default function Post() {
                   }}
                 />
                 <GapView mode="horizontal" length={5} />
-                <Text
+                <MyText
                   style={{
                     fontSize: 16,
                     textAlignVertical: 'center',
@@ -419,7 +419,7 @@ export default function Post() {
                       userVoted == true ? colors.primary : colors.text + '88',
                   }}>
                   {postDetail?.score}
-                </Text>
+                </MyText>
               </View>
             </CstmPressable>
           </View>
@@ -446,14 +446,14 @@ export default function Post() {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text
+            <MyText
               style={{
                 color: colors.text + '88',
                 fontSize: 20,
                 fontFamily: Platform.OS === 'android' ? 'sans-serif-medium' : 'OpenSans-Medium',
               }}>
               No Comments Yet!
-            </Text>
+            </MyText>
           </View>
         }
         ListFooterComponent={() => <GapView />}
@@ -526,16 +526,16 @@ export default function Post() {
                   height: 20,
                   borderRadius: 20,
                 }}>
-                <Text
+                <MyText
                   style={{ color: '#fff', fontWeight: 'bold', fontSize: 10 }}>
                   {item?.author?.name.substring(0, 1).toUpperCase()}
-                </Text>
+                </MyText>
               </View>
             )}
             <GapView mode="horizontal" length={5} />
-            <Text style={{ color: colors.text, fontSize: 12 }}>
+            <MyText style={{ color: colors.text, fontSize: 12 }}>
               {item?.author?.name}
-            </Text>
+            </MyText>
             <View
               style={{
                 width: 4,
@@ -547,9 +547,9 @@ export default function Post() {
                 marginTop: 8,
               }}
             />
-            <Text style={{ color: colors.text, fontSize: 12 }}>
+            <MyText style={{ color: colors.text, fontSize: 12 }}>
               {moment(item?.created).fromNow()}
-            </Text>
+            </MyText>
           </View>
           <View>
             <CstmPressable
@@ -574,14 +574,14 @@ export default function Post() {
           </View>
         </View>
         <GapView />
-        <Text
+        <MyText
           style={{
             color: colors.text,
             opacity: 0.7,
             fontSize: 12,
           }}>
           {item?.value}
-        </Text>
+        </MyText>
         <FlatList
           horizontal
           ItemSeparatorComponent={() => (
@@ -621,7 +621,7 @@ export default function Post() {
                     padding: 2,
                   }}
                 />
-                <Text
+                <MyText
                   style={{
                     color: colors.text + '88',
                     fontSize: 12,
@@ -629,7 +629,7 @@ export default function Post() {
                     textAlignVertical: 'center',
                   }}>
                   {replyCount}
-                </Text>
+                </MyText>
               </View>
             </CstmPressable>
             <GapView mode="horizontal" length={20} />
@@ -652,7 +652,7 @@ export default function Post() {
                     padding: 2,
                   }}
                 />
-                <Text
+                <MyText
                   style={{
                     color: colors.text + '88',
                     fontSize: 12,
@@ -660,7 +660,7 @@ export default function Post() {
                     padding: 2,
                   }}>
                   {item?.likeCount}
-                </Text>
+                </MyText>
               </View>
             </CstmPressable>
           </View>
@@ -765,14 +765,14 @@ export default function Post() {
                 alignItems: 'center',
                 padding: 10,
               }}>
-              <Text
+              <MyText
                 style={{
                   color: colors.text,
                   fontSize: 16,
                   fontFamily: Platform.OS === 'android' ? 'sans-serif-medium' : 'OpenSans-Medium',
                 }}>
                 Delete Comment
-              </Text>
+              </MyText>
               <MCI
                 name="delete-outline"
                 size={22}

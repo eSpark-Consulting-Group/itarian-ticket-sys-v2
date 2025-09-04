@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, TouchableOpacity, ActivityIndicator } from 'react-native';
+import MyText from '../MyText/MyText';
 import { Theme, useTheme } from '@react-navigation/native';
 
 import styles from './style';
@@ -33,7 +34,7 @@ const CstmButton = ({
           {loader ? (
             <ActivityIndicator color={'#fff'} size={'large'} />
           ) : (
-            <Text style={styles.text}>{title}</Text>
+            <MyText style={styles.text}>{title}</MyText>
           )}
         </TouchableOpacity>
 

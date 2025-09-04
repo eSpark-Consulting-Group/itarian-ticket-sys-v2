@@ -3,7 +3,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, RefreshControl } from 'react-native';
+import { View, FlatList, RefreshControl } from 'react-native';
 import {
   NavigationProp,
   Theme,
@@ -28,6 +28,7 @@ import { useUpdateEffect } from '../../utils/hooks';
 import { searchFromArray } from '../../utils/helperFunctions';
 import { getAllTicketStatus, getAllTicketStatusIcons } from './utils/functions';
 import { globalState } from '../../stores/globalAppState';
+import MyText from '../../components/MyText/MyText';
 
 const TicketStatus = ({
   navigation,
@@ -150,12 +151,12 @@ export const RenderTickets = ({
           android_ripple={{ color: dark ? '#ffffff0e' : '#0000000e' }}>
           <View style={styles.listItemContainer}>
             <View>
-              <Text
+              <MyText
                 style={{
                   color: colors.text,
                 }}>
                 {item?.attributes?.name}
-              </Text>
+              </MyText>
             </View>
           </View>
         </CstmPressable>

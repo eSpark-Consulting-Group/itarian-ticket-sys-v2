@@ -1,7 +1,8 @@
 import { Theme, useTheme } from '@react-navigation/native';
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import FA from 'react-native-vector-icons/Feather';
+import MyText from '../MyText/MyText';
 
 type ToolListItemProps = {
   title: string;
@@ -17,7 +18,7 @@ const ToolListItem: React.FC<ToolListItemProps> = ({
   const theme: Theme = useTheme();
   return (
     <View style={styles.container}>
-      <Text style={[styles.title, { color: theme.colors.text }]}>{title}</Text>
+      <MyText style={[styles.title, { color: theme.colors.text }]}>{title}</MyText>
       <View style={styles.actions}>
         <TouchableOpacity onPress={onEdit} style={styles.iconButton}>
           <FA name="edit-3" size={18} color={theme.colors.text} />

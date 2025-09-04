@@ -1,12 +1,13 @@
 // @flow
 import React from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, ScrollView, TouchableOpacity } from 'react-native';
 import moment, { Moment } from 'moment';
 import _ from 'lodash';
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import populateEvents from './Packer';
 import { ThemeStyle } from './style';
+import MyText from '../../MyText/MyText';
 const LEFT_MARGIN = 60 - 1;
 const CALENDER_HEIGHT = 2400;
 const TEXT_LINE_HEIGHT = 17;
@@ -107,14 +108,14 @@ export default class DayView extends React.PureComponent<MyProps, any> {
           },
         ]}>
         <View style={{ flexDirection: 'row', position: 'absolute', zIndex: 1 }}>
-          <Text
+          <MyText
             style={{
               color: 'red',
               fontSize: 10,
               textAlignVertical: 'center',
             }}>
             {timeNow}
-          </Text>
+          </MyText>
           <MCI color={'red'} size={20} name="arrow-right-bold" />
         </View>
       </View>
@@ -140,11 +141,11 @@ export default class DayView extends React.PureComponent<MyProps, any> {
       }
       const { width, styles } = this.props;
       return [
-        <Text
+        <MyText
           key={`timeLabel${i}`}
           style={[styles.timeLabel, { top: offset * i - 6 }]}>
           {timeText}
-        </Text>,
+        </MyText>,
         i === 0 ? null : (
           <View
             key={`line${i}`}
@@ -224,21 +225,21 @@ export default class DayView extends React.PureComponent<MyProps, any> {
                 onPress={() =>
                   this._onEventTapped(this.props.events[event.index])
                 }>
-                <Text numberOfLines={1} style={styles.eventTitle}>
+                <MyText numberOfLines={1} style={styles.eventTitle}>
                   {event.title || 'Event'}
-                </Text>
+                </MyText>
                 {numberOfLines > 1 ? (
-                  <Text
+                  <MyText
                     numberOfLines={numberOfLines - 1}
                     style={[styles.eventSummary]}>
                     {event.summary || ' '}
-                  </Text>
+                  </MyText>
                 ) : null}
                 {numberOfLines > 2 ? (
-                  <Text style={styles.eventTimes} numberOfLines={1}>
+                  <MyText style={styles.eventTimes} numberOfLines={1}>
                     {moment(event.start).format(formatTime)} -{' '}
                     {moment(event.end).format(formatTime)}
-                  </Text>
+                  </MyText>
                 ) : null}
               </TouchableOpacity>
             )}

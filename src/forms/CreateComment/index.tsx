@@ -3,7 +3,6 @@ import {
   View,
   Keyboard,
   ScrollView,
-  Text,
   FlatList,
   Image,
   LayoutAnimation,
@@ -29,6 +28,7 @@ import {
 } from '../../components';
 import { createComment } from '../../screens/SendFeedback/utils';
 import { Canny_CreateComment } from '../../types';
+import MyText from '../../components/MyText/MyText';
 
 interface ImageType {
   id: number;
@@ -223,7 +223,7 @@ export const CreateComment = () => {
   const ImageContainer = () => {
     return (
       <View style={{ marginTop: 10 }}>
-        <Text
+        <MyText
           style={{
             color: colors.text,
             height: moderateVerticalScale(25, 0),
@@ -232,7 +232,7 @@ export const CreateComment = () => {
             fontFamily: Platform.OS === 'android' ? 'sans-serif-medium' : 'OpenSans-Medium',
           }}>
           Add Image/s
-        </Text>
+        </MyText>
         <View
           style={{
             flexDirection: 'row',
@@ -251,7 +251,7 @@ export const CreateComment = () => {
                 alignItems: 'center',
               }}
               onPress={() => handleUploadImage()}>
-              <Text
+              <MyText
                 style={{
                   color: colors.text,
                   textAlignVertical: 'center',
@@ -261,7 +261,7 @@ export const CreateComment = () => {
                   fontFamily: Platform.OS === 'android' ? 'sans-serif-medium' : 'OpenSans-Medium',
                 }}>
                 Upload Image
-              </Text>
+              </MyText>
             </CstmPressable>
           </View>
         </View>

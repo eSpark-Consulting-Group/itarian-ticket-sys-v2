@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, Text } from 'react-native';
 
 import styles from './style';
 import { LightTheme } from '../../theme/colors';
+// import MyText from '../../components/MyText/MyText';
 
 const Splash: React.FC<{}> = () => {
   const { colors } = LightTheme;

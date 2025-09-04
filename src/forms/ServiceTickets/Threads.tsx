@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, Platform } from 'react-native';
+import { View, StyleSheet, FlatList, Platform } from 'react-native';
 import { useTheme, Theme } from '@react-navigation/native';
 import { useHookstate } from '@hookstate/core';
 import moment from 'moment';
@@ -8,6 +8,7 @@ import HTMLView from 'react-native-htmlview';
 
 import { CstmPressable, GapView } from '../../components';
 import { ticketStore } from '../../stores/ticketStore';
+import MyText from '../../components/MyText/MyText';
 
 const Threads = () => {
   const { colors }: Theme = useTheme();
@@ -44,7 +45,7 @@ const Threads = () => {
                 height: 20,
                 borderRadius: 20,
               }}>
-              <Text
+              <MyText
                 style={{
                   color: '#fff',
                   fontWeight: 'bold',
@@ -53,12 +54,12 @@ const Threads = () => {
                 {item?.attributes?.user?.user_name
                   ?.substring(0, 1)
                   .toUpperCase()}
-              </Text>
+              </MyText>
             </View>
             <GapView mode="horizontal" length={5} />
-            <Text style={{ color: colors.text, fontSize: 12 }}>
+            <MyText style={{ color: colors.text, fontSize: 12 }}>
               {item?.attributes?.user?.user_name}
-            </Text>
+            </MyText>
             <View
               style={{
                 width: 4,
@@ -70,9 +71,9 @@ const Threads = () => {
                 marginTop: 8,
               }}
             />
-            <Text style={{ color: colors.text, fontSize: 12 }}>
+            <MyText style={{ color: colors.text, fontSize: 12 }}>
               {moment(item?.attributes?.created_at).fromNow()}
-            </Text>
+            </MyText>
           </View>
           <View>
             <CstmPressable
@@ -85,7 +86,7 @@ const Threads = () => {
           </View>
         </View>
         <GapView />
-        <Text
+        <MyText
           style={{
             color: colors.text,
             fontSize: 22,
@@ -94,7 +95,7 @@ const Threads = () => {
             letterSpacing: 0.5,
           }}>
           {item?.attributes?.title}
-        </Text>
+        </MyText>
         <View
           style={{
             marginTop: 10,

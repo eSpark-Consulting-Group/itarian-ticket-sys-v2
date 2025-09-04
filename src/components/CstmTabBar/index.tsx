@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from 'react';
-import { Animated, StyleSheet, Text, View } from 'react-native';
+import { Animated, StyleSheet, View } from 'react-native';
 import { Theme, useTheme } from '@react-navigation/native';
 import _ from 'lodash';
 
@@ -7,6 +7,7 @@ import styles from './styles';
 import { ModalField } from '..';
 import { WINDOW_WIDTH } from '../../constants';
 import { CstmPressable } from '../CstmPressable';
+import MyText from '../MyText/MyText';
 
 interface Item {
   key: string;
@@ -76,9 +77,9 @@ export default function CstmTabBar(props: any) {
               ...styles.itemStyle,
               backgroundColor: colors.background,
             }}>
-            <Text style={{ ...styles.textStyle, color: colors.text }}>
+            <MyText style={{ ...styles.textStyle, color: colors.text }}>
               {item.title}
-            </Text>
+            </MyText>
           </View>
         </CstmPressable>
         {index !== routes?.length - 1 && <View style={styles.dividerStyle} />}
@@ -116,9 +117,9 @@ export default function CstmTabBar(props: any) {
                   height: '100%',
                   bottom: WINDOW_WIDTH > 600 ? 18 : 17,
                 }}>
-                <Text style={{ ...styles.textStyle, color: colors.text }}>
+                <MyText style={{ ...styles.textStyle, color: colors.text }}>
                   {props?.navigationState?.routes[currentIndex].title}
-                </Text>
+                </MyText>
               </View>
             </Animated.View>
           </View>

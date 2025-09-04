@@ -1,5 +1,6 @@
 import React from 'react';
-import { KeyboardTypeOptions, Text, View } from 'react-native';
+import { KeyboardTypeOptions, View } from 'react-native';
+import MyText from '../MyText/MyText';
 import { TextInput } from 'react-native-paper';
 import { Theme, useTheme } from '@react-navigation/native';
 
@@ -29,7 +30,7 @@ const CstmInput = ({
     <View style={styles.container}>
       <View style={styles.adjuster} />
       <View style={styles.center}>
-        <Text style={{ fontWeight: '700', color: colors.text }}>{title}</Text>
+  <MyText style={{ fontWeight: '700', color: colors.text }}>{title}</MyText>
         <TextInput
           value={value}
           style={{

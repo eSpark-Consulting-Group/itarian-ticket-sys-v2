@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
-  Text,
   TouchableOpacity,
   FlatList,
   Switch,
@@ -20,6 +19,7 @@ import { useUpdateEffect } from '../../utils/hooks';
 import { screenItemList } from '../../constants/SampleArrays';
 import { getNavigtionApps } from '../../utils/helperFunctions';
 import { BiometricVerification, CstmPressable } from '../../components';
+import MyText from '../../components/MyText/MyText';
 
 const SettingsScreen = () => {
   const themeValue: State<string> = useHookstate(globalState.theme);
@@ -116,26 +116,26 @@ const SettingsScreen = () => {
   return (
     <View style={{ padding: 20 }}>
       {/* Theme Toggle */}
-      <Text style={{ color: colors.text, opacity: 0.6, marginBottom: 10 }}>
+      <MyText style={{ color: colors.text, opacity: 0.6, marginBottom: 10 }}>
         Theme
-      </Text>
+      </MyText>
       <View
         style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 20 }}
       >
-        <Text style={{ color: colors.text, marginRight: 10 }}>Light</Text>
+        <MyText style={{ color: colors.text, marginRight: 10 }}>Light</MyText>
         <Switch
           value={isSwitchOn}
           onValueChange={onToggleSwitch}
           thumbColor={colors.primary}
           trackColor={{ true: '#5b57578f', false: '#5b57578f' }}
         />
-        <Text style={{ color: colors.text, marginLeft: 10 }}>Dark</Text>
+        <MyText style={{ color: colors.text, marginLeft: 10 }}>Dark</MyText>
       </View>
 
       {/* Default Home Screen Selection */}
-      <Text style={{ color: colors.text, opacity: 0.6, marginBottom: 10 }}>
+      <MyText style={{ color: colors.text, opacity: 0.6, marginBottom: 10 }}>
         Default Home Screen
-      </Text>
+      </MyText>
       <TouchableOpacity
         ref={dropdownRef}
         onPress={() => {
@@ -156,7 +156,7 @@ const SettingsScreen = () => {
             justifyContent: 'space-between',
           }}
         >
-          <Text style={{ color: colors.text }}>{defaultScreen}</Text>
+          <MyText style={{ color: colors.text }}>{defaultScreen}</MyText>
           <EI
             name={visible === true ? 'chevron-up' : 'chevron-down'}
             size={22}
@@ -202,7 +202,7 @@ const SettingsScreen = () => {
       )}
 
       {/* Default Navigation App */}
-      <Text
+      <MyText
         style={{
           color: colors.text,
           opacity: 0.6,
@@ -211,7 +211,7 @@ const SettingsScreen = () => {
         }}
       >
         Default Navigation App
-      </Text>
+      </MyText>
 
       <TouchableOpacity
         ref={navigationDropdownRef}
@@ -234,9 +234,9 @@ const SettingsScreen = () => {
             justifyContent: 'space-between',
           }}
         >
-          <Text style={{ color: colors.text }}>
+          <MyText style={{ color: colors.text }}>
             {defaultNav || 'Select default navigation'}
-          </Text>
+          </MyText>
           <EI
             name={navigationVisible ? 'chevron-up' : 'chevron-down'}
             size={22}
@@ -348,9 +348,9 @@ const MenuItem = ({
       >
         <View style={{ flexDirection: 'row' }}>
           {leftIcon}
-          <Text style={{ color: textColor, marginHorizontal: 5 }}>
+          <MyText style={{ color: textColor, marginHorizontal: 5 }}>
             {itemName}
-          </Text>
+          </MyText>
         </View>
         <View
           style={{ width: moderateScale(30), flexDirection: 'row-reverse' }}

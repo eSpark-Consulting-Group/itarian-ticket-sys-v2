@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useReducer } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Alert } from 'react-native';
+import { View, FlatList, TouchableOpacity, Alert } from 'react-native';
+import MyText from '../../components/MyText/MyText';
 import { useTheme, Theme } from '@react-navigation/native';
 import { Divider } from 'react-native-paper';
 import FD from 'react-native-vector-icons/Foundation';
@@ -108,14 +109,14 @@ const StopWatchScreen = ({ navigation }: any) => {
                   style={{
                     ...styles.horizontalItemStyles,
                   }}>
-                  <Text style={{ ...styles.title, color: colors.text }}>
+                  <MyText style={{ ...styles.title, color: colors.text }}>
                     Ticket {item.ticket_no}
-                  </Text>
+                  </MyText>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
-                  <Text style={{ ...styles.title, color: colors.text }}>
+                  <MyText style={{ ...styles.title, color: colors.text }}>
                     {item.summary}
-                  </Text>
+                  </MyText>
                 </View>
                 <View
                   style={{
@@ -177,7 +178,7 @@ const StopWatchScreen = ({ navigation }: any) => {
                         });
                       }}
                       disabled={item.isPlaying}>
-                      <Text
+                      <MyText
                         style={{
                           color: colors.primary,
                           textAlign: 'right',
@@ -185,7 +186,7 @@ const StopWatchScreen = ({ navigation }: any) => {
                         {item.isPlaying
                           ? item.created_at
                           : 'Create a Time Entry'}
-                      </Text>
+                      </MyText>
                     </TouchableOpacity>
                   </View>
                 </View>

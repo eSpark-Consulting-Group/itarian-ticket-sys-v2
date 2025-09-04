@@ -15,7 +15,6 @@ import {
   ToolsScreen,
 } from '../../screens';
 import Dashboard from '../../screens/Dashboard';
-import { Text } from 'react-native-paper';
 import { Touchable, TouchableOpacity } from 'react-native';
 import { Theme, useTheme } from '@react-navigation/native';
 import { V3Header } from '../../components';
@@ -31,12 +30,12 @@ const BottomTabs = () => {
         headerShown: false,
         tabBarShowLabel: true,
         tabBarActiveTintColor: '#007aff',
-        tabBarInactiveTintColor: '#000',
+        tabBarInactiveTintColor: colors.text,
         tabBarStyle: {
           height: 60,
           borderTopWidth: 0.5,
           borderTopColor: '#F2F2F2',
-          backgroundColor: '#F2F2F2',
+          backgroundColor: dark ? colors.background : '#F2F2F2',
         },
         tabBarIcon: ({ color, size }) => {
           let iconName: string | undefined;

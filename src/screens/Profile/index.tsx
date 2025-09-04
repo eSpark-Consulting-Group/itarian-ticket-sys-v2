@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import MyText from '../../components/MyText/MyText';
 import { useTheme, Theme, useRoute } from '@react-navigation/native';
 import { State, useHookstate } from '@hookstate/core';
 import { FlatList } from 'react-native-gesture-handler';
@@ -194,9 +195,9 @@ const Profile = ({ navigation }: any) => {
             setImgPath(img.path);
           }}
         />
-        <Text style={{ fontWeight: 'bold', color: colors.text, marginTop: 10 }}>
+  <MyText style={{ fontWeight: 'bold', color: colors.text, marginTop: 10 }}>
           {user.get()?.email ?? 'N/A'}
-        </Text>
+        </MyText>
       </View>
       <FlatList
         contentContainerStyle={{ paddingBottom: 70 }}
