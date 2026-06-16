@@ -57,7 +57,7 @@
     "react-native-popup-menu": "^0.19.0",
     "react-native-qrcode-scanner": "^1.5.5",
     "react-native-quick-actions": "^0.3.13",
-    "react-native-reanimated": "^3.19.5",
+    "react-native-reanimated": "^4.4.1",
     "react-native-safe-area-context": "^5.5.2",
     "react-native-screens": "^4.13.1",
     "react-native-signature-canvas": "^5.0.1",
