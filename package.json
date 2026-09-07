@@ -49,7 +49,7 @@
     "react-native-htmlview": "^0.17.0",
     "react-native-image-crop-picker": "^0.50.1",
     "react-native-modal-datetime-picker": "^18.0.0",
-    "react-native-pager-view": "^8.0.2",
+    "react-native-pager-view": "^9.0.4",
     "react-native-paper": "^5.14.5",
     "react-native-pell-rich-editor": "^1.10.0",
     "react-native-permissions": "^5.4.2",
