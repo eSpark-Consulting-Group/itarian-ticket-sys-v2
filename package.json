@@ -41,7 +41,7 @@
     "react-native-calendars": "^1.1313.0",
     "react-native-codegen": "^0.70.7",
     "react-native-countdown-component": "^2.7.1",
-    "react-native-dotenv": "^3.4.11",
+    "react-native-dotenv": "^5.0.0",
     "react-native-fingerprint-scanner": "^6.0.0",
     "react-native-flash-message": "^0.4.2",
     "react-native-gesture-handler": "^2.27.1",
